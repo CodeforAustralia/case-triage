@@ -31,19 +31,37 @@
     .state('home', { // state for showing all movies
       url: '/',
     })
-  	.state('cases', {
-  		url: '/cases',
-  		templateUrl: 'js/partials/cases.index.html',
-  		controller: 'CasesIndexController',
-      controllerAs: 'vm',
+    .state('cases', {
+      abstract: true,
+      template: '<ui-view/>',
       resolve: {
         Providers: function($log, ProvidersService){
           $log.log("Resolve providers");
           return ProvidersService.all();
         },
+      }
+    })
+  	.state('cases.index', {
+  		url: '/cases',
+  		templateUrl: 'js/partials/cases.index.html',
+  		controller: 'CasesIndexController',
+      controllerAs: 'vm',
+      resolve: {
         Cases: function($log, CasesService){
           $log.log("Resolve cases");
           return CasesService.all();
+        }
+      }
+  	})
+    .state('cases.update', {
+  		url: '/cases/update/:id',
+  		templateUrl: 'js/partials/cases.update.html',
+  		controller: 'CasesUpdateController',
+      controllerAs: 'vm',
+      resolve: {
+        Case: function($log, CasesService, $stateParams){
+          $log.log("Resolve cases");
+          return CasesService.get($stateParams.id);
         }
       }
   	});

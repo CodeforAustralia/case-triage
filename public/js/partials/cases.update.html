@@ -1,0 +1,33 @@
+<div id="cases" class="container">
+  <pre>
+    {{ vm.case | json }}
+  </pre>
+  <div class="row">
+    <h2 class="col-xs-12">Update Case {{ vm.case.id }}</h2>
+  </div>
+  <div class="row case-details">
+    <h3>{{ vm.case.client.name }}</h3>
+    <ul>
+      <li>{{ vm.case.client.hearing_date }}</li>
+    </ul>
+  </div>
+  <div class="row">
+    <h3 class="col-xs-12">Legal Conflicts</h3>
+    <form class="form col-xs-12" name="conflicts">
+      <!-- for now just add them on to the model -->
+      <formly-form model="vm.case.conflicts" fields="vm.fields.conflicts">
+      </formly>
+    </form>
+  </div>
+  <div class="row">
+    <h3 class="col-xs-12">Interactions</h3>
+    <form class="form col-xs-12" name="interactions">
+      <!-- for now just add them on to the model -->
+      <formly-form model="vm.case.interactions" fields="vm.fields.interactions">
+        <button class="btn btn-primary" ng-click="vm.saveInteraction()">
+          Save interaciton
+        </button>
+      </formly>
+    </form>
+  </div>
+</div>

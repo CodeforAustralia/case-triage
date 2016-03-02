@@ -9,22 +9,37 @@
   /*ngInject*/
   function CasesService($log){
     var data = [
-      {'id': '0001', 'hearing_date':'2015-06-16', 'resolved':false},
-      {'id': '0002', 'hearing_date':'2015-06-16', 'resolved':false},
-      {'id': '0003', 'hearing_date':'2015-06-16', 'resolved':false},
-      {'id': '0004', 'hearing_date':'2015-06-16', 'resolved':false},
-      {'id': '0005', 'hearing_date':'2015-06-16', 'resolved':false},
-      {'id': '0006', 'hearing_date':'2015-06-16', 'resolved':false},
-      {'id': '0007', 'hearing_date':'2015-06-23', 'resolved':false},
-      {'id': '0008', 'hearing_date':'2015-06-23', 'resolved':false},
-      {'id': '0009', 'hearing_date':'2015-06-23', 'resolved':false},
-      {'id': '0010', 'hearing_date':'2015-06-23', 'resolved':false},
+      {'id': '0001', 'hearing_date':'2015-06-16', 'client': 'Joe Bloggs', 'resolved':false},
+      {'id': '0002', 'hearing_date':'2015-06-16', 'client': 'John Bloggs', 'resolved':false},
+      {'id': '0003', 'hearing_date':'2015-06-16', 'client': 'Phil Bloggs', 'resolved':false},
+      {'id': '0004', 'hearing_date':'2015-06-16', 'client': 'Craig Bloggs', 'resolved':false},
+      {'id': '0005', 'hearing_date':'2015-06-16', 'client': 'Joan Bloggs', 'resolved':false},
+      {'id': '0006', 'hearing_date':'2015-06-16', 'client': 'Claire Bloggs', 'resolved':false},
+      {'id': '0007', 'hearing_date':'2015-06-23', 'client': 'Alice Bloggs', 'resolved':false},
+      {'id': '0008', 'hearing_date':'2015-06-23', 'client': 'Bob Bloggs', 'resolved':false},
+      {'id': '0009', 'hearing_date':'2015-06-23', 'client': 'Chelsea Bloggs', 'resolved':false},
+      {'id': '0010', 'hearing_date':'2015-06-23', 'client': 'Sue Bloggs', 'resolved':false},
     ];
 
     return {
       all: function(){
         $log.log("Returning all cases");
         return data;
+      },
+      get: function(id){
+        return _.find(data, {id: id});
+      },
+      key: function(target){
+        return _.findKey(data, target);
+      },
+      update: function(id, new_data){
+        $log.log("Update case");
+        var old_data = this.get(id);
+        var key = this.key(old_data);
+        $log.log(key);
+        $log.log(data[key]);
+        data[key] = new_data;
+        $log.log(data[key]);
       }
     };
   }

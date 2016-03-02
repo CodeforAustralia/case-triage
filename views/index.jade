@@ -1,5 +1,12 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  header
+    .container
+      .row
+        .col-xs-12
+          h1 NJC FV Cases
+  main(ui-view).page
+  footer
+    .container
+      p Code for Australia

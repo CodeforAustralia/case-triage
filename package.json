@@ -1,9 +1,10 @@
 {
   "name": "triage",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "PORT=3001 node ./bin/www"
+    "start": "node ./bin/www",
+    "postinstall": "bower cache clean && bower install"
   },
   "dependencies": {
     "compression": "1.6.1",

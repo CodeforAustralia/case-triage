@@ -7,9 +7,9 @@
       // route the default state to the app home
       $urlRouterProvider.when('', '/cases');
     })
-    .config(function (CacheFactoryProvider) {
+    /*.config(function (CacheFactoryProvider) {
       angular.extend(CacheFactoryProvider.defaults, { maxAge: 15 * 60 * 1000 });
-    })
+    })*/
     .controller('AppController', function ($log, $scope, $rootScope) {
       var main = this;
 
@@ -27,7 +27,7 @@
 
   function stateConfig($stateProvider){
     $stateProvider
-  	.state('cases', { // state for showing all movies
+  	.state('cases', {
   		url: '/cases',
   		templateUrl: 'js/partials/cases.index.html',
   		controller: 'CasesIndexController',

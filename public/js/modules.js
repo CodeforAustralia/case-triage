@@ -2,7 +2,7 @@
 
 angular.module('njcTriage', [
   'ui.router',
-  'angular-spinkit',
+  /*'angular-spinkit',
   'ngResource',
   'ngSanitize',
   'ngAnimate',
@@ -10,5 +10,5 @@ angular.module('njcTriage', [
   'truncate',
   'formly',
   'formlyBootstrap',
-  'mgcrea.ngStrap',
+  'mgcrea.ngStrap',*/
 ]);

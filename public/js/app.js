@@ -36,11 +36,13 @@
   		templateUrl: 'js/partials/cases.index.html',
   		controller: 'CasesIndexController',
       controllerAs: 'vm',
-      /*resolve: {
-        Cases: function(CasesService){
+      resolve: {
+        Cases: function($log, CasesService){
+          $log.log(CasesService);
+          $log.log("Resolve cases");
           return CasesService.all();
         }
-      }*/
+      }
   	});
   }
 

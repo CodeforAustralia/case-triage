@@ -7,7 +7,7 @@
     .service('CasesService', CasesService);
 
   /*ngInject*/
-  function CasesService($scope, $log){
+  function CasesService($log){
     var data = [
 
     ];

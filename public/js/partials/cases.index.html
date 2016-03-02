@@ -2,6 +2,23 @@
   <div class="row">
     <h2 class="col-xs-12">Cases</h2>
   </div>
+  <div id="cases-filter" class="row">
+    <div class="col-xs-12">
+      <div class="btn-group">
+        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Filter by service <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+          <li ng-click="vm.setProviderFilter('')">
+            <a href="#">All service providers</a>
+          </li>
+          <li ng-repeat="provider in vm.providers" ng-click="vm.setProviderFilter(provider)">
+            <a href="#">{{ provider.name }}</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
   <table class="table table-condensed">
     <thead>
       <tr>
@@ -18,10 +35,10 @@
         <td>{{ case.id }}</td>
         <td>{{ case.resolved }}</td>
         <td>
-          <button id="button" ui-sref="case.update({id: case.id})">Update</button>
+          <button class="btn btn-action" ui-sref="case.update({id: case.id})">Update</button>
         </td>
         <td>
-          <button id="button" ui-sref="case.details({id: case.id})">View details</button>
+          <button class="btn btn-action" ui-sref="case.details({id: case.id})">View details</button>
         </td>
       </tr>
     </tbody>

@@ -37,8 +37,11 @@
   		controller: 'CasesIndexController',
       controllerAs: 'vm',
       resolve: {
+        Providers: function($log, ProvidersService){
+          $log.log("Resolve providers");
+          return ProvidersService.all();
+        },
         Cases: function($log, CasesService){
-          $log.log(CasesService);
           $log.log("Resolve cases");
           return CasesService.all();
         }

@@ -9,11 +9,11 @@
   /*ngInject*/
   function CasesService($log){
     var data = [
-      {'id': '0001', 'hearing_date':'2015-06-16', 'client': 'Joe Bloggs', 'resolved':false},
+      {'id': '0001', 'hearing_date':'2015-06-16', 'client': 'Joe Bloggs', 'resolved':false, 'interactions': [{'provider':'Berry St', 'interaction':'Coffee', 'created_at':new Date()}]},
       {'id': '0002', 'hearing_date':'2015-06-16', 'client': 'John Bloggs', 'resolved':false},
       {'id': '0003', 'hearing_date':'2015-06-16', 'client': 'Phil Bloggs', 'resolved':false},
-      {'id': '0004', 'hearing_date':'2015-06-16', 'client': 'Craig Bloggs', 'resolved':false},
-      {'id': '0005', 'hearing_date':'2015-06-16', 'client': 'Joan Bloggs', 'resolved':false},
+      {'id': '0004', 'hearing_date':'2015-06-16', 'client': 'Craig Bloggs', 'resolved':false, 'interactions': [{'provider':'CoHealth', 'interaction':'Coffee', 'created_at':new Date()}]},
+      {'id': '0005', 'hearing_date':'2015-06-16', 'client': 'Joan Bloggs', 'resolved':false, 'interactions': [{'provider':'Salvation Army', 'interaction':'Coffee', 'created_at':new Date()}]},
       {'id': '0006', 'hearing_date':'2015-06-16', 'client': 'Claire Bloggs', 'resolved':false},
       {'id': '0007', 'hearing_date':'2015-06-23', 'client': 'Alice Bloggs', 'resolved':false},
       {'id': '0008', 'hearing_date':'2015-06-23', 'client': 'Bob Bloggs', 'resolved':false},

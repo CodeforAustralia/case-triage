@@ -6,11 +6,11 @@
     .controller('CasesDetailsController', CasesDetailsController);
 
   /*@ngInject*/
-  function CasesDetailsController($scope, $log, Cases, Providers){
+  function CasesDetailsController($scope, $log, Case, Providers){
 
     var vm = this;
     vm.filter = {};
-    vm.cases = Cases;
+    vm.case = Case;
     vm.providers = Providers;
 
     vm.setProviderFilter = function(provider){

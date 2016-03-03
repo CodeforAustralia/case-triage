@@ -53,6 +53,18 @@
         }
       }
   	})
+    .state('cases.details', {
+  		url: '/cases/:id',
+  		templateUrl: 'js/partials/cases.details.html',
+  		controller: 'CasesDetailsController',
+      controllerAs: 'vm',
+      resolve: {
+        Case: function($log, CasesService, $stateParams){
+          $log.log("Resolve case");
+          return CasesService.get($stateParams.id);
+        }
+      }
+  	})
     .state('cases.update', {
   		url: '/cases/update/:id',
   		templateUrl: 'js/partials/cases.update.html',
@@ -60,7 +72,7 @@
       controllerAs: 'vm',
       resolve: {
         Case: function($log, CasesService, $stateParams){
-          $log.log("Resolve cases");
+          $log.log("Resolve case");
           return CasesService.get($stateParams.id);
         }
       }

@@ -15,9 +15,7 @@
       {label:'Welcome', name: 'Welcome'},
       {label:'General introduction to the NJC', name: 'General introduction to the NJC'},
       {label:'Coffee', name: 'Coffee'},
-      {label:'Referral - Internal', name: 'Referral - Internal'},
-      {label:'Referral - External', name: 'Referral - External'},
-      {label:'Referral - Other', name: 'Referral - Other'},
+      {label:'Referral made', name: 'Referral made'},
       {label:'Consultation', name: 'Consultation'},
     ];
     vm.model = {};
@@ -81,6 +79,7 @@
     ];
 
     vm.saveInteraction = function(){
+      vm.model.interactions.created_at = new Date(); // add a timestamp
       CasesService.addInteraction(vm.case.id, vm.model.interactions);
       vm.case.interaction = {};
     };

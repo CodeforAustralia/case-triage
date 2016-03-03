@@ -11,9 +11,9 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-xs-12" ng-repeat="interaction in vm.case.interactions">
-      <h3>{{ interaction.provider }} - {{ interaction.created_at }}</h3>
-      <p>{{ interaction.interaction }}</p>
+    <div class="col-xs-12 interactions" ng-repeat="interaction in vm.case.interactions">
+      <p class="interaction-title">{{ interaction.created_at | date:"yyyy-mm-dd hh:mm"}} - {{ interaction.provider }}</>
+      <p class="interaction">{{ interaction.interaction }}</p>
     </div>
   </div>
 </div>

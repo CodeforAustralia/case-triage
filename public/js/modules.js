@@ -10,4 +10,5 @@ angular.module('njcTriage', [
   'formly',
   'formlyBootstrap',
   'mgcrea.ngStrap',
+  'toastr',
 ]);

@@ -32,4 +32,14 @@
       </formly>
     </form>
   </div>
+  <div class="row">
+    <h3 class="col-xs-12">Assign services to this case</h3>
+    <form class="form col-xs-12" name="services">
+      <formly-form model="vm.model" fields="vm.fields.services">
+        <button class="btn btn-primary" ng-click="vm.saveServices()">
+          Update assigned services
+        </button>
+      </formly>
+    </form>
+  </div>
 </div>

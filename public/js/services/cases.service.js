@@ -40,6 +40,10 @@
         var case_info = this.get(id);
         case_info.conflicts = conflicts;
       },
+      updateServices: function(id, services){
+        var case_info = this.get(id);
+        case_info.services = services;
+      },
       update: function(id, new_data){
         $log.log("Update case");
         var old_data = this.get(id);

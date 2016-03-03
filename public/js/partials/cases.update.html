@@ -15,7 +15,10 @@
     <h3 class="col-xs-12">Legal Conflicts</h3>
     <form class="form col-xs-12" name="conflicts">
       <!-- for now just add them on to the model -->
-      <formly-form model="vm.case.conflicts" fields="vm.fields.conflicts">
+      <formly-form model="vm.model.conflicts" fields="vm.fields.conflicts">
+        <button class="btn btn-primary" ng-click="vm.saveConflicts()">
+          Update conflicts
+        </button>
       </formly>
     </form>
   </div>
@@ -23,7 +26,7 @@
     <h3 class="col-xs-12">Interactions</h3>
     <form class="form col-xs-12" name="interactions">
       <!-- for now just add them on to the model -->
-      <formly-form model="vm.case.interactions" fields="vm.fields.interactions">
+      <formly-form model="vm.model.interactions" fields="vm.fields.interactions">
         <button class="btn btn-primary" ng-click="vm.saveInteraction()">
           Save interaciton
         </button>

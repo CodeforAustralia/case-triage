@@ -32,10 +32,19 @@
       key: function(target){
         return _.findKey(data, target);
       },
+      addInteraction: function(id, interaction){
+        var case_info = this.get(id);
+        case_info.interactions.push(interaction);
+      },
+      updateConflicts: function(id, conflicts){
+        var case_info = this.get(id);
+        case_info.conflicts = conflicts;
+      },
       update: function(id, new_data){
         $log.log("Update case");
         var old_data = this.get(id);
         var key = this.key(old_data);
+        // push the new interactions
         $log.log(key);
         $log.log(data[key]);
         data[key] = new_data;

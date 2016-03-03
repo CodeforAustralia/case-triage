@@ -53,10 +53,9 @@
           placeholder: 'Select a provider',
           required: true,
           options: vm.providers,
+          valueProp: 'name',
+          labelProp: 'name'
         },
-        //ngOptions: 'option.name as option in options'
-        //valueProp: 'id',
-        //labelProp: 'name'
       },
       {
         key: 'interaction',
@@ -66,10 +65,9 @@
           placeholder: 'Select a interaction',
           required: true,
           options: vm.interaction_types,
+          valueProp: 'label',
+          labelProp: 'name'
         },
-        //ngOptions: 'option.name as option in options'
-        //valueProp: 'name',
-        //labelProp: 'label'
       },
       {
         key: 'note',
@@ -83,9 +81,13 @@
     ];
 
     vm.saveInteraction = function(){
-      CasesService.update(vm.case.id, vm.case);
+      CasesService.addInteraction(vm.case.id, vm.model.interactions);
+      vm.case.interaction = {};
     };
 
+    vm.saveConflicts = function(){
+      CasesService.updateConflicts(vm.case.id, vm.model.conflicts);
+    };
 
     function init(){
       $log.log("Loaded the cases update controller");

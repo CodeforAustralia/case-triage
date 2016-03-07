@@ -39,6 +39,10 @@
           $log.log("Resolve providers");
           return ProvidersService.all();
         },
+        Interactions: function($log, InteractionsService){
+          $log.log("Resolve interactions");
+          return InteractionsService.all();
+        }
       }
     })
   	.state('cases.index', {

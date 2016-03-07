@@ -6,18 +6,14 @@
     .controller('CasesUpdateController', CasesUpdateController);
 
   /*@ngInject*/
-  function CasesUpdateController($scope, $log, Case, Providers, CasesService, toastr){
+  function CasesUpdateController($scope, $log, Case, Providers, CasesService, Interactions, toastr){
+
+    $log.log(_);
 
     var vm = this;
     vm.case = Case;
-    vm.providers = Providers;
-    vm.interaction_types = [
-      {label:'Welcome', name: 'Welcome'},
-      {label:'General introduction to the NJC', name: 'General introduction to the NJC'},
-      {label:'Coffee', name: 'Coffee'},
-      {label:'Referral made', name: 'Referral made'},
-      {label:'Consultation', name: 'Consultation'},
-    ];
+    vm.providers = _.orderBy(Providers, ['name'], ['asc']);
+    vm.interaction_types = _.orderBy(Interactions, ['id'], ['asc']);
     vm.model = {};
     vm.fields = {};
 
@@ -55,10 +51,10 @@
       },
       {
         key: 'interaction',
-        type: 'select',
+        type: 'multiCheckbox',
         templateOptions: {
-          label: 'Select a interaction',
-          placeholder: 'Select a interaction',
+          label: 'Select an interaction',
+          placeholder: 'Select an interaction',
           required: true,
           options: vm.interaction_types,
           valueProp: 'name',

@@ -20,9 +20,11 @@
     <form class="form col-xs-12" name="conflicts">
       <!-- for now just add them on to the model -->
       <formly-form model="vm.model.conflicts" fields="vm.fields.conflicts">
-        <button class="btn btn-primary" ng-click="vm.saveConflicts()">
-          Update conflicts
-        </button>
+        <div class="">
+          <button class="btn btn-primary" ng-click="vm.saveConflicts()">
+            Update conflicts
+          </button>
+        </div>
       </formly>
     </form>
   </div>
@@ -31,9 +33,11 @@
     <form class="form col-xs-12" name="interactions">
       <!-- for now just add them on to the model -->
       <formly-form model="vm.model.interactions" fields="vm.fields.interactions">
-        <button class="btn btn-primary" ng-click="vm.saveInteraction()">
-          Save interaciton
-        </button>
+        <div class="">
+          <button class="btn btn-primary" ng-click="vm.saveInteraction()">
+            Save interaciton
+          </button>
+        </div>
       </formly>
     </form>
   </div>
@@ -41,10 +45,15 @@
     <h3 class="col-xs-12">Assign services to this case</h3>
     <form class="form col-xs-12" name="services">
       <formly-form model="vm.model" fields="vm.fields.services">
-        <button class="btn btn-primary" ng-click="vm.saveServices()">
-          Update assigned services
-        </button>
+        <div class="">
+          <button class="btn btn-primary" ng-click="vm.saveServices()">
+            Update assigned services
+          </button>
+        </div>
       </formly>
     </form>
   </div>
+  <pre>
+    {{ vm.model.interactions | json }}
+  </pre>
 </div>

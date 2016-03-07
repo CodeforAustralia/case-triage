@@ -5,13 +5,14 @@
     </div>
   </div>
   <div class="row">
-    <h2 class="col-xs-12">Update Case #{{ vm.case.id }}</h2>
+    <h2 class="col-xs-12">Update Case #{{ vm.case.case_number }}</h2>
   </div>
   <div class="row case-details">
     <div class="col-xs-12">
-      <h3>{{ vm.case.client }}</h3>
       <ul>
-        <li>{{ vm.case.hearing_date }}</li>
+        <li>{{ vm.case.parties[0] }} <strong>VS</strong> {{ vm.case.parties[1] }}</li>
+        <li>Date: {{ vm.case.hearing_date }}</li>
+        <li>Type: {{ vm.case.hearing_type }}</li>
       </ul>
     </div>
   </div>

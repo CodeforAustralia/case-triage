@@ -24,16 +24,28 @@
       <tr>
         <th>Hearing date</th>
         <th>Case #</th>
-        <th>Resolved</th>
+        <th>Name</th>
+        <th>Hearing type</th>
+        <th>Has outcomes?</th>
+        <th>Services</th>
+        <th>Double conflict</th>
         <th>Update</th>
         <th>Details</th>
       </tr>
     </thead>
     <tbody>
-      <tr ng-repeat="case in vm.cases">
+      <tr ng-repeat="case in vm.cases" class="{{ (case.conflicts.length >= 2) ? 'danger' : ''}}">
         <td>{{ case.hearing_date }}</td>
-        <td>{{ case.id }}</td>
-        <td>{{ case.resolved }}</td>
+        <td>{{ case.case_number }}</td>
+        <td>
+          {{ case.parties[0] }} <br/>VS<br/> {{ case.parties[1] }}
+        </td>
+        <td>{{ case.hearing_type }}</td>
+        <td>{{ (case.outcomes === null) ? "No" : "Yes" }}</td>
+        <td>
+          <span ng-repeat="(key, service) in case.services">{{ service }},&nbsp;</span>
+        </td>
+        <td>{{ (case.conflicts.length >= 2) ? "Yes" : "No" }}</td>
         <td>
           <button class="btn btn-action" ui-sref="cases.update({id: case.id})">Update</button>
         </td>

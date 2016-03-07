@@ -6,12 +6,13 @@
     .controller('CasesDetailsController', CasesDetailsController);
 
   /*@ngInject*/
-  function CasesDetailsController($scope, $log, Case, Providers){
+  function CasesDetailsController($scope, $log, Case, Providers, Interactions){
 
     var vm = this;
     vm.filter = {};
     vm.case = Case;
-    vm.providers = Providers;
+    vm.providers = _.orderBy(Providers, ['name'], ['asc']);
+    vm.interaction_types = _.orderBy(Interactions, ['id'], ['asc']);
 
     vm.setProviderFilter = function(provider){
       vm.filter = provider;

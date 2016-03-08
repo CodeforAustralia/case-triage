@@ -31,6 +31,7 @@
         <th>Double conflict</th>
         <th>Update</th>
         <th>Details</th>
+        <th>Outcomes</th>
       </tr>
     </thead>
     <tbody>
@@ -51,6 +52,9 @@
         </td>
         <td>
           <button class="btn btn-action" ui-sref="cases.details({id: case.id})">View details</button>
+        </td>
+        <td>
+          <button class="btn btn-action" ui-sref="outcomes.update({id: case.id})">Add outcomes</button>
         </td>
       </tr>
     </tbody>

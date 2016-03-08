@@ -1,0 +1,31 @@
+<div id="case-details" class="container">
+  <div class="row page-nav">
+    <div class="col-xs-12">
+      <button ui-sref="cases.index" class="btn btn-secondary">Return</button>
+    </div>
+  </div>
+  <div class="row">
+    <h2 class="col-xs-12">Outcomes for Case #{{ vm.case.case_number }}</h2>
+  </div>
+  <div class="row case-details">
+    <div class="col-xs-12">
+      <ul>
+        <li>{{ vm.case.parties[0] }} <strong>VS</strong> {{ vm.case.parties[1] }}</li>
+        <li>Date: {{ vm.case.hearing_date }}</li>
+        <li>Type: {{ vm.case.hearing_type }}</li>
+      </ul>
+    </div>
+  </div>
+  <div class="row">
+    <h3 class="col-xs-12">Enter outcomes for this case</h3>
+    <form class="form col-xs-12" name="outcomes">
+      <formly-form model="vm.model.outcomes" fields="vm.fields.outcomes">
+        <div class="">
+          <button class="btn btn-primary" ng-click="vm.saveOutcomes()">
+            Save outcomes
+          </button>
+        </div>
+      </formly>
+    </form>
+  </div>
+</div>

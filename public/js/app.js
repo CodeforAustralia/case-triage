@@ -80,6 +80,24 @@
           return CasesService.get($stateParams.id);
         }
       }
+    })
+    .state('outcomes', {
+      abstract: true,
+      template: '<ui-view/>',
+      resolve: {
+      }
+    })
+  	.state('outcomes.update', {
+  		url: '/outcomes/update/:id',
+  		templateUrl: 'js/partials/outcomes.update.html',
+  		controller: 'OutcomesUpdateController',
+      controllerAs: 'vm',
+      resolve: {
+        Case: function($log, CasesService, $stateParams){
+          $log.log("Resolve case");
+          return CasesService.get($stateParams.id);
+        }        
+      }
   	});
   }
 

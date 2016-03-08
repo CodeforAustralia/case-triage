@@ -45,6 +45,10 @@
         var case_info = this.get(id);
         case_info.services = services;
       },
+      saveOutcomes: function(id, outcomes){
+        var case_info = this.get(id);
+        case_info.outcomes = outcomes;
+      },
       update: function(id, new_data){
         var old_data = this.get(id);
         var key = this.key(old_data);

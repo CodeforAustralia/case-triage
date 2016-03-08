@@ -62,7 +62,7 @@
         },
       },
       {
-        key: 'note',
+        key: 'notes',
         type: 'textarea',
         templateOptions: {
           label: 'Notes',

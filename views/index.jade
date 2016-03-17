@@ -1,12 +1,16 @@
 extends layout
 
 block content
-  header
+  header.global-header
     .container
       .row
         .col-xs-12
-          h1 NJC FV Cases
-  main(ui-view).page
-  footer
+          a.header-logo
+            img(src="/triage/static/imgs/njc-logo.png")
+            h1.header-title NJC FV Cases
+  main
+    .page(ui-view)
+  footer.global-footer
     .container
-      p Code for Australia
+      .row
+        .col-xs-12

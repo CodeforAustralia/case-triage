@@ -1,7 +1,24 @@
-@import "_variables";
+/******************************
+Boostrap overrides
+*******************************/
+
+@import "_colours";
+@import "_overrides";
 @import "_layout";
 @import "_cases";
 
 .njc {
+  .no-padding {
+    padding:0;
+  }
+}
 
+/******************************
+App specific
+*******************************/
+
+.njc {
+  main {    
+    .header-title {font-size:1.5em;text-transform:uppercase;font-weight:bold;}
+  }
 }

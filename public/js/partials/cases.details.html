@@ -6,16 +6,16 @@
   </div>
   <div class="row">
     <div class="col-xs-12">
-      <h1 class="header-title">Case {{ vm.case.id }}</h1>
+      <h1 class="header-title">Case {{ vm.case.meta.case_number }}</h1>
     </div>
   </div>
 </header>
 <div id="case-update" class="container">
   <div class="row case-details">
     <div class="col-xs-12">
-      <h3>{{ vm.case.client }}</h3>
+      <h3>{{ vm.case.meta.client }}</h3>
       <ul>
-        <li>{{ vm.case.hearing_date }}</li>
+        <li>{{ vm.case.meta.hearing_date | date: "yyyy-MM-dd" }}</li>
       </ul>
     </div>
   </div>

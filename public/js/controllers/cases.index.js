@@ -10,7 +10,7 @@
 
     var vm = this;
     vm.filter = {};
-    vm.cases = Cases;
+    vm.cases = Cases.data;
     vm.providers = Providers;
 
     vm.setProviderFilter = function(provider){

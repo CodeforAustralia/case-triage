@@ -11,9 +11,7 @@
     var vm = this;
     vm.case = Case;
     $log.log(vm.case);
-    vm.model = {
-      outcomes: vm.case.outcomes
-    };
+    vm.model = Case;
     vm.fields = {};
     vm.outcome_types = [
       {'name': 'Finalised - Full intervention order'},
@@ -37,8 +35,8 @@
         },
       },
       {
-        key: 'adjournment-date',
-        name: 'adjournment-date',
+        key: 'adjournment_date',
+        name: 'adjournment_date',
         type: 'input',
         templateOptions: {
           label: 'Adjournment Date',
@@ -64,7 +62,8 @@
     ];
 
     vm.saveOutcomes = function(){
-      CasesService.saveOutcomes(vm.case.id, vm.model.outcomes);
+      $log.log("Saving outcomes");
+      CasesService.saveOutcomes(vm.case.meta.case_number, vm.model.outcomes);
       success("Updated the outcomes for this case");
     };
 

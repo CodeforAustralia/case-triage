@@ -5,8 +5,8 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-xs-12">      
-      <h1 class="header-title">Outcomes for Case #{{ vm.case.case_number }}</h1>
+    <div class="col-xs-12">
+      <h1 class="header-title">Outcomes for Case #{{ vm.case.meta.case_number }}</h1>
     </div>
   </div>
 </header>
@@ -15,8 +15,8 @@
     <div class="col-xs-12">
       <ul>
         <li>{{ vm.case.parties[0] }} <strong>VS</strong> {{ vm.case.parties[1] }}</li>
-        <li>Date: {{ vm.case.hearing_date }}</li>
-        <li>Type: {{ vm.case.hearing_type }}</li>
+        <li>Date: {{ vm.case.meta.hearing_date | date: "yyyy-MM-dd" }}</li>
+        <li>Type: {{ vm.case.meta.hearing_type }}</li>
       </ul>
     </div>
   </div>

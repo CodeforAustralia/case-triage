@@ -35,26 +35,26 @@
       </tr>
     </thead>
     <tbody>
-      <tr ng-repeat="case in vm.cases" class="{{ (case.conflicts.length >= 2) ? 'danger' : ''}}">
-        <td>{{ case.hearing_date }}</td>
-        <td>{{ case.case_number }}</td>
+      <tr ng-repeat="case in vm.cases" class="{{ (case.conflicts.vla && case.conflicts.fls) ? 'danger' : ''}}">
+        <td>{{ case.meta.hearing_date | date:"yyyy-MM-dd"}}</td>
+        <td>{{ case.meta.case_number }}</td>
         <td>
           {{ case.parties[0] }} <br/>VS<br/> {{ case.parties[1] }}
         </td>
-        <td>{{ case.hearing_type }}</td>
-        <td>{{ (case.outcomes === null) ? "No" : "Yes" }}</td>
+        <td>{{ case.meta.hearing_type }}</td>
+        <td>{{ (_.isNull(case.outcomes) || case.outcomes.length == 0) ? "No" : "Yes" }}</td>
         <td>
           <span ng-repeat="(key, service) in case.services">{{ service }},&nbsp;</span>
         </td>
-        <td>{{ (case.conflicts.length >= 2) ? "Yes" : "No" }}</td>
+        <td>{{ (case.conflicts.vla && case.conflicts.fls) ? "Yes" : "No" }}</td>
         <td>
-          <button class="btn btn-action" ui-sref="cases.update({id: case.id})">Update</button>
+          <button class="btn btn-action" ui-sref="cases.update({id: case.meta.case_number})">Update</button>
         </td>
         <td>
-          <button class="btn btn-action" ui-sref="cases.details({id: case.id})">View details</button>
+          <button class="btn btn-action" ui-sref="cases.details({id: case.meta.case_number})">View details</button>
         </td>
         <td>
-          <button class="btn btn-action" ui-sref="outcomes.update({id: case.id})">Add outcomes</button>
+          <button class="btn btn-action" ui-sref="outcomes.update({id: case.meta.case_number})">Add outcomes</button>
         </td>
       </tr>
     </tbody>

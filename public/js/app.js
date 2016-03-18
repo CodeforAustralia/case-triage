@@ -22,7 +22,7 @@
     })
     .constant('_', window._)
     .config(stateConfig)
-    .run(function($log, $rootScope, $location){
+    .run(function($log, $rootScope, $location, CasesService){
       $log.log("Running the app");
     });
 
@@ -42,6 +42,10 @@
         Interactions: function($log, InteractionsService){
           $log.log("Resolve interactions");
           return InteractionsService.all();
+        },
+        Cases: function($log, CasesService){
+          $log.log("Resolve cases");
+          return CasesService.all();
         }
       }
     })
@@ -51,10 +55,6 @@
   		controller: 'CasesIndexController',
       controllerAs: 'vm',
       resolve: {
-        Cases: function($log, CasesService){
-          $log.log("Resolve cases");
-          return CasesService.all();
-        }
       }
   	})
     .state('cases.details', {
@@ -63,7 +63,7 @@
   		controller: 'CasesDetailsController',
       controllerAs: 'vm',
       resolve: {
-        Case: function($log, CasesService, $stateParams){
+        Case: function($log, Cases, CasesService, $stateParams){
           $log.log("Resolve case");
           return CasesService.get($stateParams.id);
         }
@@ -75,7 +75,7 @@
   		controller: 'CasesUpdateController',
       controllerAs: 'vm',
       resolve: {
-        Case: function($log, CasesService, $stateParams){
+        Case: function($log, Cases, CasesService, $stateParams){
           $log.log("Resolve case");
           return CasesService.get($stateParams.id);
         }
@@ -85,6 +85,10 @@
       abstract: true,
       template: '<ui-view/>',
       resolve: {
+        Cases: function($log, CasesService){
+          $log.log("Resolve cases");
+          return CasesService.all();
+        }
       }
     })
   	.state('outcomes.update', {
@@ -93,10 +97,10 @@
   		controller: 'OutcomesUpdateController',
       controllerAs: 'vm',
       resolve: {
-        Case: function($log, CasesService, $stateParams){
+        Case: function($log, Cases, CasesService, $stateParams){
           $log.log("Resolve case");
           return CasesService.get($stateParams.id);
-        }        
+        }
       }
   	});
   }

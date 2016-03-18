@@ -9,14 +9,16 @@
   /*ngInject*/
   function InteractionsService($log){
     var data = [
-      {"id":1,"name":"General introduction"},
-      {"id":2,"name":"Hospitality"},
-      {"id":3,"name":"Referral"},
-      {"id":4,"name":"Court Support"},
-      {"id":5,"name":"Provision of information"},
-      {"id":6,"name":"Case consult"},
-      {"id":7,"name":"Allocate a quiet room"},
-      {"id":8,"name":"Other"}
+      {"id":1,"name":"Hospitality"},
+      {"id":2,"name":"General Introduction (F2F)"},
+      {"id":3,"name":"Assessment & Referral"},
+      {"id":4,"name":"Information Provision"},
+      {"id":5,"name":"Case Consultation"},
+      {"id":6,"name":"Court Support (both 'in' & 'at')"},
+      {"id":7,"name":"Service Liaison/Co-Ordination"},
+      {"id":8,"name":"Assistance With Forms"},
+      {"id":9,"name":"Quiet Room Allocation"},
+      {"id":10,"name":"Other"}
     ];
 
     return {

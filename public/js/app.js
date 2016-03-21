@@ -8,8 +8,12 @@
       $urlRouterProvider.when('', '/cases');
       $urlRouterProvider.when('/', '/cases');
     })
-    .config(function (CacheFactoryProvider) {
+    .config(function (CacheFactoryProvider, $collapseProvider) {
       angular.extend(CacheFactoryProvider.defaults, { maxAge: 15 * 60 * 1000 });
+
+      angular.extend($collapseProvider.defaults, {
+        animation: 'am-flip-x'
+      });
     })
     .controller('AppController', function ($log, $scope, $rootScope) {
       var main = this;

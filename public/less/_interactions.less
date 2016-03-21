@@ -1,0 +1,44 @@
+.interactions {
+  div:last-of-type {
+    .interaction-list {padding-bottom:0;}
+  }
+
+  .interaction {
+    position:relative;
+    font-size:11pt;
+    //background:@white;
+    padding:0 1em;
+    border-left:dotted @dark-grey 1px;
+    //margin-bottom:1em;
+
+    .interaction-timestamp {
+      font-weight:bold;
+      font-size:1.125em;
+      margin:0;
+
+    }
+
+    .interaction-timestamp-marker {
+      display:inline;
+      position:absolute;
+      left:-.45em;
+      top:-0.1em;
+      color:@col-information;
+    }
+
+    .interaction-list {
+      margin:0;
+      padding:0;
+      list-style-type:none;
+      padding-bottom:1em;
+    }
+
+    .interaction-content {
+      margin:0;padding:0;
+    }
+
+    .interaction-content:last-of-type{
+      //padding-bottom:1em;
+    }
+  }
+}

@@ -1,0 +1,7 @@
+<div>
+  <ul>
+    <li>{{ case.parties[0] }} <strong>VS</strong> {{ case.parties[1] }}</li>
+    <li>Date: {{ case.meta.hearing_date | date: "yyyy-MM-dd" }}</li>
+    <li>Type: {{ case.meta.hearing_type }}</li>
+  </ul>
+</div>

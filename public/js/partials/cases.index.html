@@ -27,10 +27,10 @@
         <th>Name</th>
         <th>Hearing type</th>
         <th>Has outcomes?</th>
-        <th>Services</th>
+        <th>Assigned Services</th>
         <th>Double conflict</th>
         <th>Update</th>
-        <th>Details</th>
+        <!--<th>Details</th>-->
         <th>Outcomes</th>
       </tr>
     </thead>
@@ -44,15 +44,17 @@
         <td>{{ case.meta.hearing_type }}</td>
         <td>{{ (_.isNull(case.outcomes) || case.outcomes.length == 0) ? "No" : "Yes" }}</td>
         <td>
-          <span ng-repeat="(key, service) in case.services">{{ service }},&nbsp;</span>
+          <ul class="table-assigned-services-list">
+            <li ng-repeat="(key, service) in case.assigned_services">{{ service }}</li>
+          </ul>
         </td>
         <td>{{ (case.conflicts.vla && case.conflicts.fls) ? "Yes" : "No" }}</td>
         <td>
           <button class="btn btn-action" ui-sref="cases.update({id: case.meta.case_number})">Update</button>
         </td>
-        <td>
+        <!--<td>
           <button class="btn btn-action" ui-sref="cases.details({id: case.meta.case_number})">View details</button>
-        </td>
+        </td>-->
         <td>
           <button class="btn btn-action" ui-sref="outcomes.update({id: case.meta.case_number})">Add outcomes</button>
         </td>

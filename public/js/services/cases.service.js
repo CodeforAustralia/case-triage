@@ -68,8 +68,14 @@
         return _.findKey(case_list, target);
       },
       addInteraction: function(id, interaction){
-        var case_info = this.byCaseNumber(id);
-        case_info.interactions.push(interaction);
+        var case_info = this.get(id);
+        $log.log("Add interaction");
+        case_info.interactions.push({
+          service_provider: interaction.service_provider,
+          types: interaction.types,
+          notes: interaction.notes
+        });
+        $log.log(case_info);
         return updateCase(case_info);
       },
       updateConflicts: function(id, conflicts){

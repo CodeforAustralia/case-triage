@@ -11,57 +11,59 @@
   </div>
 </header>
 <div id="case-details" class="container">
-  <div class="row col-xs-8">
-    <div class="row case-details">
-      <case-details class="col-xs-12" case="vm.case"></case-details>
-    </div>
-    <div class="panel-group" role="tablist" aria-multiselectable="true" bs-collapse>
-      <div class="row panel">
-        <h3 class="col-xs-12 panel-heading" bs-collapse-toggle>Legal Conflicts</h3>
-        <form class="form col-xs-12" name="conflicts" class="panel-collapse" role="tabpanel" bs-collapse-target>
-          <!-- for now just add them on to the model -->
-          <formly-form model="vm.model.conflicts" fields="vm.fields.conflicts">
-            <div class="">
-              <button class="btn btn-primary" ng-click="vm.saveConflicts()">
-                Update conflicts
-              </button>
-            </div>
+  <div class="row">
+    <div class="col-xs-8">
+      <div class="row case-details">
+        <case-details class="col-xs-12" case="vm.case"></case-details>
+      </div>
+      <div class="panel-group" role="tablist" aria-multiselectable="true" bs-collapse>
+        <div class="row panel">
+          <h3 class="col-xs-12 panel-heading" bs-collapse-toggle>Legal Conflicts</h3>
+          <form class="form col-xs-12" name="conflicts" class="panel-collapse" role="tabpanel" bs-collapse-target>
+            <!-- for now just add them on to the model -->
+            <formly-form model="vm.model.conflicts" fields="vm.fields.conflicts">
+              <div class="">
+                <button class="btn btn-primary" ng-click="vm.saveConflicts()">
+                  Update conflicts
+                </button>
+              </div>
+              <br/>
+            </formly>
+          </form>
+        </div>
+        <div class="row panel">
+          <h3 class="col-xs-12 panel-heading" bs-collapse-toggle>Assign services to this case</h3>
+          <form class="form col-xs-12" name="services" class="panel-collapse" role="tabpanel" bs-collapse-target>
+            <formly-form model="vm.model" fields="vm.fields.services">
+              <div class="">
+                <button class="btn btn-primary" ng-click="vm.saveServices()">
+                  Update assigned services
+                </button>
+              </div>
+            </formly>
             <br/>
-          </formly>
-        </form>
-      </div>
-      <div class="row panel">
-        <h3 class="col-xs-12 panel-heading" bs-collapse-toggle>Assign services to this case</h3>
-        <form class="form col-xs-12" name="services" class="panel-collapse" role="tabpanel" bs-collapse-target>
-          <formly-form model="vm.model" fields="vm.fields.services">
-            <div class="">
-              <button class="btn btn-primary" ng-click="vm.saveServices()">
-                Update assigned services
-              </button>
-            </div>
-          </formly>
-          <br/>
-        </form>
-      </div>
-      <div class="row panel">
-        <h3 class="col-xs-12 panel-heading" bs-collapse-toggle>Interactions</h3>
-        <form class="form col-xs-12" name="interactions" class="panel-collapse" role="tabpanel" bs-collapse-target>
-          <!-- for now just add them on to the model -->
-          <formly-form model="vm.model.interactions" fields="vm.fields.interactions">
-            <div class="">
-              <button class="btn btn-primary" ng-click="vm.saveInteraction()">
-                Save interaction
-              </button>
-            </div>
-          </formly>
-          <br/>
-        </form>
+          </form>
+        </div>
+        <div class="row panel">
+          <h3 class="col-xs-12 panel-heading" bs-collapse-toggle>Interactions</h3>
+          <form class="form col-xs-12" name="interactions" class="panel-collapse" role="tabpanel" bs-collapse-target>
+            <!-- for now just add them on to the model -->
+            <formly-form model="vm.model.interactions" fields="vm.fields.interactions">
+              <div class="">
+                <button class="btn btn-primary" ng-click="vm.saveInteraction()">
+                  Save interaction
+                </button>
+              </div>
+            </formly>
+            <br/>
+          </form>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="row col-xs-4">
-    <div class="row">
-      <interactions-list class="col-xs-12" interactions="vm.case.interactions"></interactions-list>
+    <div class="col-xs-4">
+      <div class="row">
+        <interactions-list class="col-xs-12" interactions="vm.case.interactions"></interactions-list>
+      </div>
     </div>
   </div>
 </div>

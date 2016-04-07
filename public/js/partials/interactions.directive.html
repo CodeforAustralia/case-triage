@@ -3,7 +3,8 @@
   <div ng-repeat="interaction in interactions | orderBy: '-created_at'" class="interaction">
     <h3 class="interaction-timestamp">
       <span class="fa fa-circle interaction-timestamp-marker">&nbsp;</span>
-      {{ interaction.created_at | date: "yyyy-MM-dd hh:mm a" }} - {{ interaction.service_provider }}
+      {{ interaction.created_at | date: "MMM dd, yyyy hh:mm a" }}
+      </br/>{{ interaction.service_provider }}
     </h3>
     <ul class="interaction-list">
       <li class="interaction-content" ng-repeat="item in interaction.types">{{ item }}</li>

@@ -19,6 +19,7 @@
     "express-session": "1.13.0",
     "faker": "^3.0.1",
     "jade": "1.9.2",
+    "lodash": "^4.11.0",
     "moment": "2.11.2",
     "mongoose": "^4.4.3",
     "mongoose-deep-populate": "2.0.3",

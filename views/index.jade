@@ -2,7 +2,7 @@ extends layout
 
 block content
   header.global-header
-    .container
+    .container-fluid
       .row
         .col-xs-12
           a.header-logo
@@ -11,6 +11,14 @@ block content
   main
     .page(ui-view)
   footer.global-footer
-    .container
+    .container-fluid
       .row
         .col-xs-12
+  script.
+    angular.module('njcTriage')
+      .constant('Constants',  Object.freeze({
+        'urls': {
+          'api':'#{appConfig.urls.api}',
+          'public':'#{appConfig.urls.public}'
+        }
+      }));

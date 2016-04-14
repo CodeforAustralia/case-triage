@@ -7,7 +7,8 @@ var CaseSchema = mongoose.Schema({
   meta:{
     case_number: String,
     hearing_date: Date,
-    hearing_type: String
+    hearing_type: String,
+    matter: String
   },
   parties: [],
   conflicts: {

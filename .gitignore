@@ -1,4 +1,6 @@
 .tags*
+config.json
+*.log
 
 /bootstrap/compiled.php
 /vendor

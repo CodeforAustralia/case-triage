@@ -1,0 +1,7 @@
+{
+  "urls": {
+    "public":"/triage/static",
+    "api": "/triage/api"
+  },
+  "passport_secret":"njc-triage-secret-sauce"
+}

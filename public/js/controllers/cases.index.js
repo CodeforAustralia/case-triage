@@ -14,7 +14,9 @@
     vm.providers = Providers;
 
     vm.setProviderFilter = function(provider){
-      vm.filter = provider;
+      $log.log("Setting provider");
+      $log.log(provider);
+      vm.filter = provider.name;
     };
 
     function init(){

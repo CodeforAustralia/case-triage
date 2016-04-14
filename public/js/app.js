@@ -26,17 +26,54 @@
     })
     .constant('_', window._)
     .config(stateConfig)
-    .run(function($log, $rootScope, $location, CasesService){
+    .run(function($log, $rootScope, $location, CasesService, $state, AuthService, Constants){
       $log.log("Running the app");
+      $log.log("Check auth");
+      $rootScope.$on("$stateChangeStart", function(event, toState, toParams, fromState, fromParams){
+        if (toState.authenticate && !AuthService.isAuthenticated()){
+          $log.log("Not Authenticated");
+          // User isn’t authenticated
+          $state.transitionTo("auth.login");
+          event.preventDefault();
+        }
+      });
     });
 
-  function stateConfig($stateProvider){
+  function stateConfig($stateProvider, Constants){
     $stateProvider
     .state('home', { // state for showing all movies
       url: '/',
     })
+    .state('auth', {
+      abstract: true,
+      template: "<ui-view />"
+    })
+  	.state('auth.login', {
+  		url: '/login',
+  		templateUrl: Constants.urls.public+'/js/partials/login.html',
+  		controller: 'LoginController',
+      controllerAs: 'vm',
+      resolve: {
+
+      }
+  	})
+    .state('auth.logout', {
+  		url: '/login',
+  		controller: function($scope, AuthService, $state){
+        AuthService
+          .logout()
+          .then(function(){
+            $state.go('auth.login');
+          });
+      },
+      controllerAs: 'vm',
+      resolve: {
+
+      }
+  	})
     .state('cases', {
       abstract: true,
+      authenticate : true,
       template: '<ui-view/>',
       resolve: {
         Providers: function($log, ProvidersService){
@@ -55,6 +92,7 @@
     })
   	.state('cases.index', {
   		url: '/cases',
+      authenticate : true,
   		templateUrl: 'js/partials/cases.index.html',
   		controller: 'CasesIndexController',
       controllerAs: 'vm',
@@ -63,6 +101,7 @@
   	})
     .state('cases.details', {
   		url: '/cases/:id',
+      authenticate : true,
   		templateUrl: 'js/partials/cases.details.html',
   		controller: 'CasesDetailsController',
       controllerAs: 'vm',
@@ -75,6 +114,7 @@
   	})
     .state('cases.update', {
   		url: '/cases/update/:id',
+      authenticate : true,
   		templateUrl: 'js/partials/cases.update.html',
   		controller: 'CasesUpdateController',
       controllerAs: 'vm',
@@ -87,6 +127,7 @@
     })
     .state('outcomes', {
       abstract: true,
+      authenticate : true,
       template: '<ui-view/>',
       resolve: {
         Cases: function($log, CasesService){
@@ -97,6 +138,7 @@
     })
   	.state('outcomes.update', {
   		url: '/outcomes/update/:id',
+      authenticate : true,
   		templateUrl: 'js/partials/outcomes.update.html',
   		controller: 'OutcomesUpdateController',
       controllerAs: 'vm',

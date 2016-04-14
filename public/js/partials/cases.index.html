@@ -1,7 +1,7 @@
-<header class="container">
+<header class="container-fluid">
   <h1 class="header-title">Cases</h1>
 </header>
-<div id="cases" class="container">
+<div id="cases" class="container-fluid">
   <div id="cases-filter" class="row">
     <div class="col-xs-12">
       <div class="btn-group">
@@ -17,6 +17,9 @@
           </li>
         </ul>
       </div>
+      <a ng-if="vm.filter.length > 0" class="btn-cancel" ng-click="vm.setProviderFilter('')">
+        <span class="fa fa-times"></span> Clear all filters
+      </a>
     </div>
   </div>
   <table class="table table-condensed">
@@ -26,29 +29,30 @@
         <th>Case #</th>
         <th>Name</th>
         <th>Hearing type</th>
-        <th>Has outcomes?</th>
-        <th>Assigned Services</th>
-        <th>Double conflict</th>
+        <th>Has Outcomes?</th>
+        <th>Services</th>
+        <th>Conflict</th>
         <th>Update</th>
         <!--<th>Details</th>-->
         <th>Outcomes</th>
       </tr>
     </thead>
     <tbody>
-      <tr ng-repeat="case in vm.cases" class="{{ (case.conflicts.vla && case.conflicts.fls) ? 'danger' : ''}}">
+      <tr ng-repeat="case in filteredCases = (vm.cases | filter: vm.filter) | orderBy:['meta.hearing_date','meta.case_number','meta.hearing_type']" class="{{ (case.conflicts.vla && case.conflicts.fls) ? 'danger' : ''}}">
         <td>{{ case.meta.hearing_date | date:"yyyy-MM-dd"}}</td>
         <td>{{ case.meta.case_number }}</td>
         <td>
           {{ case.parties[0] }} <br/>VS<br/> {{ case.parties[1] }}
         </td>
-        <td>{{ case.meta.hearing_type }}</td>
+        <td>{{ case.meta.hearing_type }} - {{ case.meta.matter }}</td>
         <td>{{ (_.isNull(case.outcomes) || case.outcomes.length == 0) ? "No" : "Yes" }}</td>
         <td>
           <ul class="table-assigned-services-list">
             <li ng-repeat="(key, service) in case.assigned_services">{{ service }}</li>
           </ul>
         </td>
-        <td>{{ (case.conflicts.vla && case.conflicts.fls) ? "Yes" : "No" }}</td>
+        <td ng-if="case.conflicts.vla && case.conflicts.fls"><strong>Yes</strong></td>
+        <td ng-if="!case.conflicts.vla || !case.conflicts.fls">No</td>
         <td>
           <button class="btn btn-action" ui-sref="cases.update({id: case.meta.case_number})">Update</button>
         </td>
@@ -57,6 +61,12 @@
         </td>-->
         <td>
           <button class="btn btn-action" ui-sref="outcomes.update({id: case.meta.case_number})">Add outcomes</button>
+        </td>
+      </tr>
+      <tr ng-if="filteredCases.length === 0">
+        <td colspan="9">
+          <p>No results match the filter '{{ vm.filter }}'&nbsp;<a ng-if="vm.filter.length > 0" class="btn-cancel" ng-click="vm.setProviderFilter('')">Clear all filters</a>
+          </p>
         </td>
       </tr>
     </tbody>

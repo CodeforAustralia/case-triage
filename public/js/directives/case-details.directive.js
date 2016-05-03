@@ -1,9 +1,8 @@
-(function(){
+module.exports = function(app){
   'use strict';
   // App bootstrapping + DI
   /*@ngInject*/
-  angular.module('njcTriage')
-    .directive('caseDetails', function($log){
+  app.directive('caseDetails', function($log){
       return {
         restrict: "EA", // element or attribute only
         replace: true, // replace the element
@@ -20,4 +19,4 @@
       };
     });
 
-})();
+};

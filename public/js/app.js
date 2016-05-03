@@ -1,9 +1,9 @@
-(function(){
+module.exports = function(app){
   'use strict';
+  var angular = require('angular');
   // App bootstrapping + DI
   /*@ngInject*/
-  angular.module('njcTriage')
-    .config(function($urlRouterProvider){
+  app.config(function($urlRouterProvider){
       // route the default state to the app home
       $urlRouterProvider.when('', '/cases');
       $urlRouterProvider.when('/', '/cases');
@@ -25,16 +25,27 @@
       $log.log("AppController loading");
     })
     .constant('_', window._)
+    .config(function($datepickerProvider) {
+      angular.extend($datepickerProvider.defaults, {
+        dateFormat: 'dd/MM/yyyy',
+        startWeek: 1
+      });
+    })
     .config(stateConfig)
-    .run(function($log, $rootScope, $location, CasesService, $state, AuthService, Constants){
+    .run(function($log, $rootScope,$window,  $location, CasesService, $state, AuthService, Constants){
       $log.log("Running the app");
       $log.log("Check auth");
+      $log.log("Location");
+      $log.log($location);
+      $log.log($location.$$host);
       $rootScope.$on("$stateChangeStart", function(event, toState, toParams, fromState, fromParams){
-        if (toState.authenticate && !AuthService.isAuthenticated()){
-          $log.log("Not Authenticated");
-          // User isn’t authenticated
-          $state.transitionTo("auth.login");
-          event.preventDefault();
+        if ($location.$$host !== 'localhost'){
+          if (toState.authenticate && !AuthService.isAuthenticated()){
+            $log.log("Not Authenticated");
+            // User isn’t authenticated
+            $state.transitionTo("auth.login");
+            event.preventDefault();
+          }
         }
       });
     });
@@ -151,4 +162,4 @@
   	});
   }
 
-})();
+};

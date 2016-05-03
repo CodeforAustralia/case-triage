@@ -1,10 +1,9 @@
 // Dummy data service
-(function(){
+module.exports = function(app){
   'use strict';
 
   /*ngInject*/
-  angular.module('njcTriage')
-    .service('ProvidersService', ProvidersService);
+  app.service('ProvidersService', ProvidersService);
 
   /*ngInject*/
   function ProvidersService($log){
@@ -20,6 +19,13 @@
       {"id":9,"name":"Odyssey House"},
       {"id":10,"name":"Fitzroy Legal Service"},
       {"id":11,"name":"Victoria Legal Aid"},
+      {"id":12,"name":"NEAMI"},
+      {"id":13,"name":"Interpreter"},
+      {"id":14,"name":"New Hope"},
+      {"id":15,"name":"DSCV"},
+      {"id":16,"name":"CSV Drug and Alchohol"},
+      {"id":17,"name":"Court Officer"},
+      {"id":18,"name":"Duty Worker"},
     ];
 
     return {
@@ -29,4 +35,4 @@
       }
     };
   }
-})();
+};

@@ -1,0 +1,7 @@
+{
+  "urls": {
+    "public": "<public-directory>",
+    "api": "<api-url-prefix"
+  },
+  "passport_secret":"<passport-secret>"
+}

@@ -1,9 +1,8 @@
-(function(){
+module.exports = function(app){
   'use strict';
   // App bootstrapping + DI
   /*@ngInject*/
-  angular.module('njcTriage')
-    .controller('CasesDetailsController', CasesDetailsController);
+  app.controller('CasesDetailsController', CasesDetailsController);
 
   /*@ngInject*/
   function CasesDetailsController($scope, $log, Case, Providers, Interactions){
@@ -15,7 +14,7 @@
     vm.interaction_types = _.orderBy(Interactions, ['id'], ['asc']);
 
     vm.setProviderFilter = function(provider){
-      vm.filter = provider;
+      vm.filter = provider;      
     };
 
     function init(){
@@ -25,4 +24,4 @@
     init();
   }
 
-})();
+};

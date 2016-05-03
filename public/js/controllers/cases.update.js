@@ -1,9 +1,8 @@
-(function(){
+module.exports = function(app){
   'use strict';
   // App bootstrapping + DI
   /*@ngInject*/
-  angular.module('njcTriage')
-    .controller('CasesUpdateController', CasesUpdateController);
+  app.controller('CasesUpdateController', CasesUpdateController);
 
   /*@ngInject*/
   function CasesUpdateController($scope, $log, Case, Providers, CasesService, Interactions, toastr){
@@ -115,4 +114,4 @@
     init();
   }
 
-})();
+};

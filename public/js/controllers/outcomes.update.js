@@ -1,9 +1,8 @@
-(function(){
+module.exports = function(app){
   'use strict';
   // App bootstrapping + DI
   /*@ngInject*/
-  angular.module('njcTriage')
-    .controller('OutcomesUpdateController', OutcomesUpdateController);
+  app.controller('OutcomesUpdateController', OutcomesUpdateController);
 
   /*@ngInject*/
   function OutcomesUpdateController($scope, $log, toastr, Case, CasesService){
@@ -18,6 +17,8 @@
       {'name': 'Finalised - Full limited intervention order'},
       {'name': 'Adjournment - Interim intervention order'},
       {'name': 'Adjournment - Interim limited intervention order'},
+      {'name': 'Adjournment - Straight'},
+      {'name': 'Withdrawn'}
     ];
 
     vm.fields.outcomes = [
@@ -79,4 +80,4 @@
     init();
   }
 
-})();
+};

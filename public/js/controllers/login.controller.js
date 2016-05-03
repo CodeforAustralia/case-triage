@@ -1,9 +1,8 @@
-(function(){
+module.exports = function(app){
   'use strict';
   // App bootstrapping + DI
   /*@ngInject*/
-  angular.module('njcTriage')
-    .controller('LoginController', LoginController);
+  app.controller('LoginController', LoginController);
 
   /*@ngInject*/
   function LoginController($scope, $log, $rootScope, $modal, AuthService){
@@ -45,4 +44,4 @@
     init();
   }
 
-})();
+};

@@ -1,8 +1,7 @@
-(function(){
+module.exports = function(app){
 'use strict';
 
-angular.module('njcTriage')
-    .factory('AlertService', AlertService);
+app.factory('AlertService', AlertService);
 
 /*@ngInject*/
 function AlertService($rootScope, $log, $alert){
@@ -25,4 +24,4 @@ function AlertService($rootScope, $log, $alert){
 	};
 }
 
-})();
+};

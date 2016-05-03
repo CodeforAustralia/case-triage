@@ -1,10 +1,8 @@
-// Dummy data service
-(function(){
+module.exports = function(app){
   'use strict';
 
   /*ngInject*/
-  angular.module('njcTriage')
-    .service('InteractionsService', InteractionsService);
+  app.service('InteractionsService', InteractionsService);
 
   /*ngInject*/
   function InteractionsService($log){
@@ -28,4 +26,4 @@
       }
     };
   }
-})();
+};

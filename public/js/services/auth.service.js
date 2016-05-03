@@ -1,10 +1,9 @@
-(function(){
+module.exports = function(app){
 'use strict';
 
 // Authentication service, returns a resource
 /*@ngInject*/
-angular.module('njcTriage')
-	.service('AuthService', function($log, $state, $http, $sanitize, AlertService, Constants){
+app.service('AuthService', function($log, $state, $http, $sanitize, AlertService, Constants){
 		var loggedIn = false;
 
 		return {
@@ -39,4 +38,4 @@ angular.module('njcTriage')
 		};
 	});
 
-})();
+};

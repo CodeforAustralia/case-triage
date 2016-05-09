@@ -23,7 +23,7 @@ module.exports = function(app){
       $log.log("updating the case");
       $log.log(_case);
       return $http
-              .put("api/cases/" + _case._id, _case)
+              .put("/api/cases/" + _case._id, _case)
               .then(function(response){
                 $log.log("Response");
                 $log.log(response);
@@ -36,7 +36,7 @@ module.exports = function(app){
       all: function(){
         //$log.log("Returning all cases");
         //return data;
-        return $http.get("api/cases")
+        return $http.get("/api/cases")
         .then(function(response){
           $log.log("Cases retrieved");
           case_list = response.data;
@@ -44,7 +44,7 @@ module.exports = function(app){
         });
       },
       create: function(_case){
-        return $http.post("api/cases", _case);
+        return $http.post("/api/cases", _case);
       },
       get: function(id){
         $log.log("GET");

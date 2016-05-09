@@ -32,7 +32,7 @@ module.exports = function(app){
       });
     })
     .config(stateConfig)
-    .run(function($log, $rootScope,$window,  $location, CasesService, $state, AuthService, Constants){
+    .run(function($log, $rootScope,$window,  $location, CasesService, $state, AuthService){
       $log.log("Running the app");
       $log.log("Check auth");
       $log.log("Location");
@@ -50,7 +50,7 @@ module.exports = function(app){
       });
     });
 
-  function stateConfig($stateProvider, Constants){
+  function stateConfig($stateProvider){
     $stateProvider
     .state('home', { // state for showing all movies
       url: '/',
@@ -61,7 +61,7 @@ module.exports = function(app){
     })
   	.state('auth.login', {
   		url: '/login',
-  		templateUrl: Constants.urls.public+'/js/partials/login.html',
+  		templateUrl: '/triage/static/js/partials/login.html',
   		controller: 'LoginController',
       controllerAs: 'vm',
       resolve: {

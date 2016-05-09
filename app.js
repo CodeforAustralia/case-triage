@@ -1,3 +1,4 @@
+require('dotenv').config();
 var _ = require('lodash');
 var fs = require('fs');
 var path = require('path');
@@ -13,9 +14,6 @@ var morgan = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-// config files
-var config = require('./config.json');
-
 // models
 var authUser = require('./models/authUser');
 
@@ -26,6 +24,9 @@ var migrations = require('./routes/migrations');
 var auth = require('./routes/auth');
 
 var app = express();
+// config files
+var config = process.env;
+
 
 // console message colours
 var chalk = require('chalk'); // colour our output
@@ -61,8 +62,8 @@ var LocalStrategy = require('passport-local').Strategy;
 app.use(express.static(path.join(__dirname, 'public')));
 
 // configure passport - add passport middleware and setup
-if (_.isUndefined(config.passport_secret) || config.passport_secret === "<your-passport-secret>") throw new Error(error("You must set a your own unique passport_secret in your config.json"));
-app.use(session({ secret: config.passport_secret, resave: false, saveUninitialized: false}));
+if (_.isUndefined(config.PASSPORT_SECRET) || config.PASSPORT_SECRET === "<your-passport-secret>") throw new Error(error("You must set a your own unique PASSPORT_SECRET in your environment variables"));
+app.use(session({secret: config.PASSPORT_SECRET, resave: false, saveUninitialized: false}));
 app.use(passport.initialize());
 app.use(passport.session());
 

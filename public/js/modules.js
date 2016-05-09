@@ -12,5 +12,3 @@ angular.module('njcTriage', [
   'mgcrea.ngStrap',
   'toastr',
 ]);
-
-angular.module('njcTriage.Constants', []);

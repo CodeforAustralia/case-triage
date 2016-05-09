@@ -1,5 +1,4 @@
 var angular = require('angular');
-var config = require('json!../../config.json');
 
 // require our 3rd party modules
 require('angular-cache');
@@ -25,13 +24,7 @@ var app = angular.module('njcTriage', [
     'formlyBootstrap',
     'mgcrea.ngStrap',
     'toastr'
-  ])
-  .constant('Constants',  Object.freeze({
-    'urls': {
-      'api': config.urls.api,
-      'public': config.urls.public
-    }
-  }));
+  ]);
 
 // main app
 require('./app')(app);

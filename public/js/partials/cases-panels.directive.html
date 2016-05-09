@@ -5,10 +5,13 @@
       <h2>Cases for {date}</h2>
     </div>
   </div>
-  <div ng-repeat="case in filteredCases = (cases | filter: filter) | orderBy:['meta.hearing_date','meta.case_number','meta.hearing_type']" class="{{ (case.conflicts.vla && case.conflicts.fls) ? 'danger' : ''}}">
+  <div ng-if="cases.length > 0" ng-repeat="case in filteredCases = (cases | filter: filter) | orderBy:['meta.hearing_date', 'meta.list_number','meta.case_number','meta.hearing_type']" class="{{ (case.conflicts.vla && case.conflicts.fls) ? 'danger' : ''}}">
     <div class="row">
       <div class="col-xs-12">
-        <h4>{{ case.meta.case_number }} | {{ case.meta.hearing_type }} - {{ case.meta.matter }}</h4>
+        <p>
+          <strong>{{ case.meta.case_number }}</strong> | {{ case.meta.hearing_type }} - {{ case.meta.matter }}
+          <br/><button class="text-right btn btn-action" ui-sref="outcomes.update({id: case.meta.case_number})">Case outcomes</button>
+        </p>
       </div>
     </div>
     <div class="row">
@@ -18,39 +21,29 @@
             <tr>
               <th>Party</th>
               <th>Double conflict?</th>
-              <th>Has Outcomes?</th>
-              <th>Services</th>
+              <th>Assigned Services</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>{{ case.parties[0].name }}</td>
-              <td>{{ (case.conflicts.vla && case.conflicts.fls) ? "Yes" : "No" }}</td>
-              <td>{{ (_.isNull(case.outcomes) || case.outcomes.length == 0) ? "No" : "Yes" }}</td>
+            <tr ng-repeat="party in case.parties">
+              <td>{{ party.name }}</td>
+              <td>{{ (party.conflicts.vla && party.conflicts.fls) ? "Yes" : "No" }}</td>
+              <td ng-if='party.assigned_services.length > 0'><span class="table-assigned-service" ng-repeat="(key, service) in party.assigned_services">{{ service }}, </span></td>
+              <td ng-if='party.assigned_services.length == 0'>No services assigned yet</td>
               <td>
-                <span class="table-assigned-service" ng-repeat="(key, service) in case.assigned_services">{{ service }},</span>
-              </td>
-              <td>
-                <button class="btn btn-action" ui-sref="cases.update({id: case.meta.case_number})">Update</button>
-                &nbsp;
-                <button class="btn btn-action" ui-sref="outcomes.update({id: case.meta.case_number})">Add outcomes</button>
+                <button class="btn btn-action" ui-sref="cases.update({id: case.meta.case_number, party: party._id})">Update</button>
               </td>
             </tr>
-            <tr>
-              <td>{{ case.parties[1].name }}</td>
-              <td>{{ (case.conflicts.vla && case.conflicts.fls) ? "Yes" : "No" }}</td>
-              <td>{{ (_.isNull(case.outcomes) || case.outcomes.length == 0) ? "No" : "Yes" }}</td>
-              <td>
-                <span class="table-assigned-service" ng-repeat="(key, service) in case.assigned_services">{{ service }},</span>
-              </td>
-              <td>
-                <button class="btn btn-action" ui-sref="cases.update({id: case.meta.case_number})">Update</button>
-                &nbsp;
-                <button class="btn btn-action" ui-sref="outcomes.update({id: case.meta.case_number})">Add outcomes</button>
-              </td>
-            </tr>
+
           </tbody>
         </table>
+      </div>
+    </div>
+  </div>
+  <div ng-if="cases.length==0">
+    <div class="row">
+      <div class="col-xs-12">
+        <p>No cases have been entered</p>
       </div>
     </div>
   </div>

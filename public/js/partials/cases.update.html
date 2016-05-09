@@ -7,15 +7,13 @@
   <div class="row">
     <div class="col-xs-12">
       <h1 class="header-title">Updates for Case #{{ vm.case.meta.case_number }}</h1>
+      <h4>{{ vm.party.name }}</h4>
     </div>
   </div>
 </header>
 <div id="case-details" class="container">
   <div class="row">
     <div class="col-xs-8">
-      <div class="row case-details">
-        <case-details class="col-xs-12" case="vm.case"></case-details>
-      </div>
       <div class="panel-group" role="tablist" aria-multiselectable="true" bs-collapse>
         <div class="row panel">
           <h3 class="col-xs-12 panel-heading" bs-collapse-toggle>Legal Conflicts</h3>
@@ -48,7 +46,7 @@
           <h3 class="col-xs-12 panel-heading" bs-collapse-toggle>Interactions</h3>
           <form class="form col-xs-12" name="interactions" class="panel-collapse" role="tabpanel" bs-collapse-target>
             <!-- for now just add them on to the model -->
-            <formly-form model="vm.model.interactions" fields="vm.fields.interactions">
+            <formly-form model="vm.interaction" fields="vm.fields.interactions">
               <div class="">
                 <button class="btn btn-primary" ng-click="vm.saveInteraction()">
                   Save interaction
@@ -62,7 +60,7 @@
     </div>
     <div class="col-xs-4">
       <div class="row">
-        <interactions-list class="col-xs-12" interactions="vm.case.interactions"></interactions-list>
+        <interactions-list class="col-xs-12" interactions="vm.party.interactions"></interactions-list>
       </div>
     </div>
   </div>

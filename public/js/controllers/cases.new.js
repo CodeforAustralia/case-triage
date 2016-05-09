@@ -30,6 +30,14 @@ module.exports = function(app){
 
     vm.fields = [
       {
+        name: 'list_number',
+        key: 'list_number',
+        type: 'input',
+        templateOptions: {
+          label: 'List number'
+        },
+      },
+      {
         name: 'case_number',
         key: 'case_number',
         type: 'input',

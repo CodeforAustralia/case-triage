@@ -126,7 +126,7 @@ module.exports = function(app){
       }
     })
     .state('cases.details', {
-  		url: '/cases/:id',
+  		url: '/cases/:id/:party',
       authenticate : true,
   		templateUrl: 'js/partials/cases.details.html',
   		controller: 'CasesDetailsController',
@@ -139,7 +139,7 @@ module.exports = function(app){
       }
   	})
     .state('cases.update', {
-  		url: '/cases/update/:id',
+  		url: '/cases/:id/update/:party',
       authenticate : true,
   		templateUrl: 'js/partials/cases.update.html',
   		controller: 'CasesUpdateController',

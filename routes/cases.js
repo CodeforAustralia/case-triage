@@ -11,13 +11,15 @@ function transformCase(data, callback){
   var _case = new Cases();
   _case.meta = {
     case_number: data.case_number,
+    list_number: data.list_number || "",
     hearing_date: data.hearing_date,
-    hearing_type: data.hearing_type
+    hearing_type: data.hearing_type,
+    matter: data.matter,
   };
   _case.parties = data.parties || [];
   _case.outcomes = data.outcomes || [];
-  _case.conflicts = {vla: false, fls: false};
-  _case.interactions = data.interactions || [];
+  //_case.conflicts = {vla: false, fls: false};
+  //_case.interactions = data.interactions || [];
   callback(null, _case);
   return _case;
 }
@@ -55,11 +57,13 @@ function createIfDoesntExist(err, _case){
 }
 
 router.get('/seeder', function(req, res, next){
+  console.log("SEEDING");
   if (_.isUndefined(process.env.NODE_ENV) && process.env.NODE_ENV == 'production') {
     console.error(chalkColours.error("Dont try and seed production"));
     throw Error("Page not found");
   }
   // seed the db
+  console.log(seed);
   seedDb(seed, function(err, cases){
     if (!err){
       res.json(cases);
@@ -99,6 +103,7 @@ router.post('/', function(req, res, next) {
   var params = req.body;
   var _case = new Cases({
     "meta": {
+      "list_number": params.list_number,
       "case_number": params.case_number,
       "hearing_date": params.hearing_date,
       "hearing_type": params.hearing_type,
@@ -128,15 +133,6 @@ router.post('/', function(req, res, next) {
 /* PUT update a resource */
 router.put('/:id', function(req, res, next) {
   var id = req.params.id;
-  /*var _case = Cases.find({id: id});
-  console.log(_case);
-  _case.meta = req.body.meta;
-  _case.conflicts = req.body.conflicts;
-  _case.parties = req.body.parties;
-  _case.interactions = req.body.interactions;
-  _case.assigned_services = req.body.assigned_services;
-  _case.outcomes = req.body.outcomes;*/
-
   console.log(req.body);
   var _case = req.body;
   delete _case._id;

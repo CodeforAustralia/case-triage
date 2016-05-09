@@ -7,28 +7,34 @@ var mongoose = require('mongoose');
 var CaseSchema = mongoose.Schema({
   meta:{
     case_number: String,
+    list_number: Number,
     hearing_date: Date,
     hearing_type: String,
-    matter: String
+    matter: String,
   },
-  parties: [{name: String, age: Number, birthday: Date}],
-  conflicts: {
-    vla: {type: Boolean, default: false},
-    fls: {type: Boolean, default: false}
-  },
-  interactions: [{
-    created_at: {type: Date, default: new Date()},
-    service_provider: String,
-    types: [],
-    notes: String,
+  parties: [{
+    name: String,
+    attended: Boolean,
+    age: Number,
+    birthday: Date,
+    assigned_services: [],
+    interactions: [{
+      created_at: {type: Date, default: new Date()},
+      service_provider: String,
+      types: [],
+      notes: String,
+    }],
+    conflicts: {
+      vla: {type: Boolean, default: false},
+      fls: {type: Boolean, default: false}
+    },
   }],
-  assigned_services: [],
   outcomes: [{
     created_at: {type: Date, default: new Date()},
     outcome: String,
     adjournment_date: Date,
     notes: String,
-  }]
+  }],
 });
 
 var Cases = mongoose.model('Cases', CaseSchema);

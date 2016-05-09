@@ -22,6 +22,7 @@ var authUser = require('./models/authUser');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var cases = require('./routes/cases');
+var migrations = require('./routes/migrations');
 var auth = require('./routes/auth');
 
 var app = express();
@@ -82,6 +83,7 @@ app.use('/', routes);
 app.use('/users', users);
 app.use('/api/cases', cases);
 app.use('/api/auth', auth);
+app.use('/migrations', migrations);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

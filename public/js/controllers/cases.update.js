@@ -5,15 +5,15 @@ module.exports = function(app){
   app.controller('CasesUpdateController', CasesUpdateController);
 
   /*@ngInject*/
-  function CasesUpdateController($scope, $log, Case, Providers, CasesService, Interactions, toastr){
-
-    $log.log(_);
+  function CasesUpdateController($scope, $log, Case, $stateParams, Providers, CasesService, Interactions, toastr){
 
     var vm = this;
     vm.case = Case;
     vm.providers = _.orderBy(Providers, ['name'], ['asc']);
     vm.interaction_types = _.orderBy(Interactions, ['id'], ['asc']);
-    vm.model = Case;
+    vm.party = _.find(vm.case.parties, {'_id': $stateParams.party});
+    vm.model = vm.party;
+    vm.interaction = {};
     vm.fields = {};
 
     vm.fields.conflicts = [
@@ -86,21 +86,35 @@ module.exports = function(app){
       }
     ];
 
+    function updateParty(msg, done){
+      _.each(vm.case.parties, function(v, k){
+        if (v._id == vm.party._id){
+          vm.party.assigned_services = vm.model.assigned_services;
+          vm.party.interactions = vm.party.interactions;
+          vm.party.conflicts = vm.model.conflicts;
+          vm.case.parties[k] = vm.party;
+        }
+      });
+
+      CasesService.update(vm.case);
+      success(msg);
+      if (done) done();
+    }
+
     vm.saveServices = function(){
-      CasesService.updateServices(vm.case.meta.case_number, vm.model.assigned_services);
-      success("Updated the assigned services");
+      CasesService.updateServices(vm.case.meta.case_number, vm.party._id, vm.model.assigned_services);
+      updateParty("Updated the assigned services", null);
     };
 
     vm.saveInteraction = function(){
-      vm.model.interactions.created_at = new Date(); // add a timestamp
-      CasesService.addInteraction(vm.case.meta.case_number, vm.model.interactions);
-      vm.case.interaction = {};
-      success("Saved your new interaction");
+      vm.party.interactions.push(vm.interaction);
+      updateParty("Saved your new interaction", function(err, res){
+        vm.interaction = {};
+      });
     };
 
     vm.saveConflicts = function(){
-      CasesService.updateConflicts(vm.case.meta.case_number, vm.model.conflicts);
-      success("Updated the legal conflicts");
+      updateParty("Updated the legal conflicts", null);
     };
 
     function init(){

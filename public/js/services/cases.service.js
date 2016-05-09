@@ -57,28 +57,27 @@ module.exports = function(app){
       key: function(target){
         return _.findKey(case_list, target);
       },
-      addInteraction: function(id, interaction){
+      addInteraction: function(id, party_id, interaction){
         var case_info = this.get(id);
         $log.log("Add interaction");
+        case_info.party = party_id;
         case_info.interactions.push({
           service_provider: interaction.service_provider,
           types: interaction.types,
           notes: interaction.notes
         });
-        $log.log(case_info);
         return updateCase(case_info);
       },
-      updateConflicts: function(id, conflicts){
+      updateConflicts: function(id, party_id, conflicts){
         var case_info = this.get(id);
         $log.log(case_info);
-        /*_.each(conflicts, function(conflict, index){
-          case_info.conflicts.push(index);
-        });*/
+        case_info.party = party_id;
         case_info.conflicts = conflicts;
         return updateCase(case_info);
       },
-      updateServices: function(id, services){
+      updateServices: function(id, party_id, services){
         var case_info = this.get(id);
+        case_info.party = party_id;
         case_info.assigned_services = services;
         $log.log(services);
         return updateCase(case_info);
@@ -90,15 +89,8 @@ module.exports = function(app){
         $log.log(case_info);
         return updateCase(case_info);
       },
-      update: function(id, new_data){
-        // update the item in the local case_list array
-        var old_data = this.get(id);
-        var key = this.key(old_data);
-        // push the new interactions
-        $log.log(key);
-        $log.log(data[key]);
-        case_list[key] = new_data;
-        $log.log(case_list[key]);
+      update: function(new_data){
+        return updateCase(new_data);
       }
     };
   }

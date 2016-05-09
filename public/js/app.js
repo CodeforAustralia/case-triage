@@ -110,6 +110,21 @@ module.exports = function(app){
       resolve: {
       }
   	})
+    .state('cases.new', {
+      url: '/cases/new',
+      authenticate : true,
+      templateUrl: 'js/partials/cases.new.html',
+      controller: 'CasesNewController',
+      controllerAs: 'vm',
+      resolve: {
+        HearingTypes: function(HearingTypesService){
+          return HearingTypesService.all();
+        },
+        Matters: function(MattersService){
+          return MattersService.all();
+        }
+      }
+    })
     .state('cases.details', {
   		url: '/cases/:id',
       authenticate : true,

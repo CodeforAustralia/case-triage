@@ -43,6 +43,9 @@ module.exports = function(app){
           return response;
         });
       },
+      create: function(_case){
+        return $http.post("api/cases", _case);
+      },
       get: function(id){
         $log.log("GET");
         $log.log(case_list);

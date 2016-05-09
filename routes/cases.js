@@ -96,7 +96,33 @@ router.get('/:case_number', function(req, res, next) {
 
 /* POST add a new resource */
 router.post('/', function(req, res, next) {
-  res.send('respond with a resource');
+  var params = req.body;
+  var _case = new Cases({
+    "meta": {
+      "case_number": params.case_number,
+      "hearing_date": params.hearing_date,
+      "hearing_type": params.hearing_type,
+      "matter": params.matter,
+    },
+    "parties": [params.parties[0],params.parties[1]]
+  });
+
+  Cases.findOne({
+    "meta.case_number": _case.meta.case_number,
+    "meta.hearing_date": _case.meta.hearing_date
+  }, function(err, case_res){
+    if (err) throw Error(err);
+    if (case_res) res.status(409).send('Case already exists');
+    // save the case
+    _case.save(function(err, _c){
+      if (err){
+        //throw Error("There was a problem saving the case");
+        res.sendStatus(500);
+      }
+      else
+        res.json(_case);
+    });
+  });
 });
 
 /* PUT update a resource */

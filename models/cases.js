@@ -2,6 +2,7 @@
 var mongoose = require('mongoose');
 
 // TODO: Validations for the model
+// TODO: Need to extend the 'parties' model to include age / dob, name, attended status
 
 var CaseSchema = mongoose.Schema({
   meta:{
@@ -10,7 +11,7 @@ var CaseSchema = mongoose.Schema({
     hearing_type: String,
     matter: String
   },
-  parties: [],
+  parties: [{name: String, age: Number, birthday: Date}],
   conflicts: {
     vla: {type: Boolean, default: false},
     fls: {type: Boolean, default: false}

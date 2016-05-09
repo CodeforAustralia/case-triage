@@ -40,6 +40,7 @@ require('./app')(app);
 require('./controllers/cases.details')(app);
 require('./controllers/cases.index')(app);
 require('./controllers/cases.update')(app);
+require('./controllers/cases.new')(app);
 require('./controllers/login.controller')(app);
 require('./controllers/outcomes.update')(app);
 
@@ -51,5 +52,7 @@ require('./directives/interactions.directive')(app);
 require('./services/alert.service')(app);
 require('./services/auth.service')(app);
 require('./services/cases.service')(app);
+require('./services/hearing-types.service')(app);
+require('./services/matters.service')(app);
 require('./services/interactions.service')(app);
 require('./services/providers.service')(app);

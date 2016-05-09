@@ -45,6 +45,8 @@ require('./controllers/login.controller')(app);
 require('./controllers/outcomes.update')(app);
 
 // directives
+require('./directives/cases-panels.directive')(app);
+require('./directives/cases-table.directive')(app);
 require('./directives/case-details.directive')(app);
 require('./directives/interactions.directive')(app);
 

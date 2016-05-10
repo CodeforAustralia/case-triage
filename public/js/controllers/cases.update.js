@@ -13,8 +13,24 @@ module.exports = function(app){
     vm.interaction_types = _.orderBy(Interactions, ['id'], ['asc']);
     vm.party = _.find(vm.case.parties, {'_id': $stateParams.party});
     vm.model = vm.party;
+    vm.model.meta = {
+      attended: vm.party.attended,
+      age: vm.party.age,
+      birthday: vm.party.birthday,
+    };
     vm.interaction = {};
     vm.fields = {};
+
+    vm.fields.meta = [
+      {
+        name: 'attended',
+        key: 'attended',
+        type: 'checkbox',
+        templateOptions: {
+          label: 'Did the client attend?',
+        },
+      },
+    ];
 
     vm.fields.conflicts = [
       {

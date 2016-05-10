@@ -116,7 +116,7 @@ if (app.get('env') === 'development') {
 }
 else {
   // connect to remote mongodb
-  mongoose.connect(process.env.MONGOLAB_URI); // connect to local mongo
+  mongoose.connect(process.env.MONGO_URL); // connect to local mongo
   db = mongoose.connection;
 
   db.on('error', console.error.bind(console, 'connection error:'));

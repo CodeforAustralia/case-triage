@@ -14,7 +14,24 @@
 <div id="case-details" class="container">
   <div class="row">
     <div class="col-xs-8">
+      <pre>
+        {{ vm.model | json }}
+      </pre>
       <div class="panel-group" role="tablist" aria-multiselectable="true" bs-collapse>
+        <div class="row panel">
+          <h3 class="col-xs-12 panel-heading" bs-collapse-toggle>General information</h3>
+          <form class="form col-xs-12" name="conflicts" class="panel-collapse" role="tabpanel" bs-collapse-target>
+            <!-- for now just add them on to the model -->
+            <formly-form model="vm.model.meta" fields="vm.fields.meta">
+              <div class="">
+                <button class="btn btn-primary" ng-click="vm.saveConflicts()">
+                  Update information
+                </button>
+              </div>
+              <br/>
+            </formly>
+          </form>
+        </div>
         <div class="row panel">
           <h3 class="col-xs-12 panel-heading" bs-collapse-toggle>Legal Conflicts</h3>
           <form class="form col-xs-12" name="conflicts" class="panel-collapse" role="tabpanel" bs-collapse-target>

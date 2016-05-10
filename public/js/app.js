@@ -38,7 +38,7 @@ module.exports = function(app){
       $log.log("Location");
       $log.log($location);
       $log.log($location.$$host);
-      $rootScope.$on("$stateChangeStart", function(event, toState, toParams, fromState, fromParams){
+      /*$rootScope.$on("$stateChangeStart", function(event, toState, toParams, fromState, fromParams){
         if ($location.$$host !== 'localhost'){
           if (toState.authenticate && !AuthService.isAuthenticated()){
             $log.log("Not Authenticated");
@@ -47,7 +47,7 @@ module.exports = function(app){
             event.preventDefault();
           }
         }
-      });
+      });*/
     });
 
   function stateConfig($stateProvider){

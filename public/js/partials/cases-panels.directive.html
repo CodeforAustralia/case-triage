@@ -31,6 +31,9 @@
               <td ng-if='party.assigned_services.length > 0'><span class="table-assigned-service" ng-repeat="(key, service) in party.assigned_services">{{ service }}, </span></td>
               <td ng-if='party.assigned_services.length == 0'>No services assigned yet</td>
               <td>
+                <button class="btn btn-action" name="button">Risk assessment</button>
+              </td>
+              <td>
                 <button class="btn btn-action" ui-sref="cases.update({id: case.meta.case_number, party: party._id})">Update</button>
               </td>
             </tr>

@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-xs-12">
       <!--<h2>{{ case.meta.hearing_date | date:"yyyy-MM-dd"}}</h2>-->
-      <h2>Cases for {date}</h2>
+      <h2>Cases for</h2>
     </div>
   </div>
   <div ng-if="cases.length > 0" ng-repeat="case in filteredCases = (cases | filter: filter) | orderBy:['meta.hearing_date', 'meta.list_number','meta.case_number','meta.hearing_type']" class="{{ (case.conflicts.vla && case.conflicts.fls) ? 'danger' : ''}}">
@@ -30,9 +30,9 @@
               <td>{{ (party.conflicts.vla && party.conflicts.fls) ? "Yes" : "No" }}</td>
               <td ng-if='party.assigned_services.length > 0'><span class="table-assigned-service" ng-repeat="(key, service) in party.assigned_services">{{ service }}, </span></td>
               <td ng-if='party.assigned_services.length == 0'>No services assigned yet</td>
-              <td>
+              <!--<td>
                 <button class="btn btn-action" name="button">Risk assessment</button>
-              </td>
+              </td>-->
               <td>
                 <button class="btn btn-action" ui-sref="cases.update({id: case.meta.case_number, party: party._id})">Update</button>
               </td>

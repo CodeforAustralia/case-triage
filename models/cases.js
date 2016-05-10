@@ -19,10 +19,11 @@ var CaseSchema = mongoose.Schema({
     birthday: Date,
     assigned_services: [],
     interactions: [{
-      created_at: {type: Date, default: new Date()},
+      date: Date,
       service_provider: String,
       types: [],
       notes: String,
+      created_at: {type: Date, default: new Date()},
     }],
     conflicts: {
       vla: {type: Boolean, default: false},

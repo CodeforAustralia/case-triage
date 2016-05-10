@@ -13,11 +13,11 @@ module.exports = function(app){
     vm.interaction_types = _.orderBy(Interactions, ['id'], ['asc']);
     vm.party = _.find(vm.case.parties, {'_id': $stateParams.party});
     vm.model = vm.party;
-    vm.model.meta = {
-      attended: vm.party.attended,
-      age: vm.party.age,
-      birthday: vm.party.birthday,
-    };
+    vm.model = _.extend(vm.party, {
+      attended: vm.party.attended || false,
+      age: vm.party.age || null,
+      birthday: vm.party.birthday || null,
+    });
     vm.interaction = {};
     vm.fields = {};
 
@@ -27,8 +27,28 @@ module.exports = function(app){
         key: 'attended',
         type: 'checkbox',
         templateOptions: {
-          label: 'Did the client attend?',
+          label: 'Did this client attend?',
         },
+      },
+      {
+        name: 'age',
+        key: 'age',
+        type: 'input',
+        templateOptions: {
+          label: 'Age of this client',
+        }
+      },
+      {
+        name: 'birthday',
+        key: 'birthday',
+        type: 'input',
+        templateOptions: {
+          label: 'Clients birthday',
+          'bs-datepicker': 'bs-datepicker',
+        },
+        ngModelAttrs: {
+          'bs-datepicker': {attribute: 'bs-datepicker'},
+        }
       },
     ];
 
@@ -52,6 +72,18 @@ module.exports = function(app){
     ];
 
     vm.fields.interactions = [
+      {
+        name: 'date',
+        key: 'date',
+        type: 'input',
+        templateOptions: {
+          label: 'Date',
+          'bs-datepicker': 'bs-datepicker',
+        },
+        ngModelAttrs: {
+          'bs-datepicker': {attribute: 'bs-datepicker'},
+        }
+      },
       {
         key: 'service_provider',
         type: 'select',
@@ -131,6 +163,10 @@ module.exports = function(app){
 
     vm.saveConflicts = function(){
       updateParty("Updated the legal conflicts", null);
+    };
+
+    vm.saveMetaInformation = function(){
+      updateParty("Updated the clients information", null);
     };
 
     function init(){

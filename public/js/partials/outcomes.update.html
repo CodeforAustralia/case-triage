@@ -14,7 +14,7 @@
   <div class="row case-details">
     <div class="col-xs-12">
       <ul>
-        <li>{{ vm.case.parties[0] }} <strong>VS</strong> {{ vm.case.parties[1] }}</li>
+        <li>{{ vm.case.parties[0].name }} <strong>VS</strong> {{ vm.case.parties[1].name }}</li>
         <li>Date: {{ vm.case.meta.hearing_date | date: "yyyy-MM-dd" }}</li>
         <li>Type: {{ vm.case.meta.hearing_type }}</li>
       </ul>

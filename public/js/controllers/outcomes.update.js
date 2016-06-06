@@ -9,15 +9,18 @@ module.exports = function(app){
 
     var vm = this;
     vm.case = Case;
-    $log.log(vm.case);
     vm.model = Case;
     vm.fields = {};
+
+    $log.log("Loading the outcomes update controller");
+
     vm.outcome_types = [
       {'name': 'Finalised - Full intervention order'},
       {'name': 'Finalised - Full limited intervention order'},
-      {'name': 'Adjournment - Interim intervention order'},
+      {'name': 'Adjournment - Interim full intervention order'},
       {'name': 'Adjournment - Interim limited intervention order'},
       {'name': 'Adjournment - Straight'},
+      {'name': 'Struck Out'},
       {'name': 'Withdrawn'}
     ];
 
@@ -42,7 +45,7 @@ module.exports = function(app){
         templateOptions: {
           label: 'Adjournment Date',
           placeholder: 'Enter the date the matter was adjourned until',
-          required: true,
+          required: false,
           'bs-datepicker': 'bs-datepicker'
         },
         ngModelAttrs: {
@@ -50,6 +53,7 @@ module.exports = function(app){
             attribute: 'bs-datepicker'
           }
         },
+        hideExpression: 'model.outcome.indexOf("Finalised") < 0'
       },
       {
         name: 'notes',

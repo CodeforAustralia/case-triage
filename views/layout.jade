@@ -33,7 +33,7 @@ html
     link(rel="stylesheet/less", type="text/css", href='/triage/static/less/app.less')
     script(type="text/javascript", src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.5.3/less.min.js")
     if !appConfig || appConfig.env || appConfig.env === 'development'
-      script(type="text/javascript", src="http://localhost:8080/Users/bardock/Sites/njc/triage/public/jsbundle.js")
+      script(type="text/javascript", src="http://localhost:8080/webpack-dev-server/build/bundle.js")
     else
       script(type="text/javascript", src="/triage/static/build/bundle.js")
 

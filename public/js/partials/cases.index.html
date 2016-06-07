@@ -4,7 +4,7 @@
 <div id="cases" class="container-fluid">
   <div id="cases-filter" class="row">
     <div class="col-xs-8">
-      <div class="btn-group">
+      <!--<div class="btn-group">
         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Filter by service <span class="caret"></span>
         </button>
@@ -16,7 +16,26 @@
             <a href="#">{{ provider.name }}</a>
           </li>
         </ul>
+      </div>-->
+      <div class="form-group">
+        <label for="">Filter by hearing date</label>
+        <select class="form-control" name="" ng-model="vm.hearing_date_model" ng-change="vm.setHearingDate()">
+          <option ng-repeat="d in vm.hearing_dates">{{ d | date: 'yyyy-MM-dd' }}</option>
+        </select>
       </div>
+      <!--<div class="btn-group">
+        <button type="button" class="btn btn-default" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Filter by hearing date <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+          <li ng-click="vm.setHearingDate(null)">
+            <a href="#">All service providers</a>
+          </li>
+          <li ng-repeat="d in vm.hearing_dates" ng-click="vm.setHearingDate(d)">
+            <a href="#">{{ d | date: 'yyyy-MM-dd' }}</a>
+          </li>
+        </ul>
+      </div>-->
       <a ng-if="vm.filter.length > 0" class="btn-cancel" ng-click="vm.setProviderFilter('')">
         <span class="fa fa-times"></span> Clear all filters
       </a>
@@ -29,5 +48,5 @@
       </div>
     </div>
   </div>
-  <cases-panels cases="vm.cases" filter="vm.filter"></cases-panels>
+  <cases-panels cases="vm.cases" filter="vm.filter" date="vm.hearing_date"></cases-panels>
 </div>

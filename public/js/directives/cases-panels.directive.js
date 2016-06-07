@@ -9,7 +9,8 @@ module.exports = function(app){
       templateUrl: 'js/partials/cases-panels.directive.html',
       scope: {
         'cases': '=',
-        'filter': '='
+        'filter': '=',
+        'date': '='
       },
       link: function(scope, elem, attrs){
         $log.log("Cases panels directive");

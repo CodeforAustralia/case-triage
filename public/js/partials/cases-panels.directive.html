@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-xs-12">
       <!--<h2>{{ case.meta.hearing_date | date:"yyyy-MM-dd"}}</h2>-->
-      <h2>Cases for</h2>
+      <h2>Cases for {{ date | date:"yyyy-MM-dd" }}</h2>
     </div>
   </div>
   <div ng-if="cases.length > 0" ng-repeat="case in filteredCases = (cases | filter: filter) | orderBy:['meta.hearing_date', 'meta.list_number','meta.case_number','meta.hearing_type']" class="{{ (case.conflicts.vla && case.conflicts.fls) ? 'danger' : ''}}">

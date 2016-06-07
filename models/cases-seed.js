@@ -45,4 +45,39 @@ var CasesSeedLatest = [
   {'list_number': 33, 'hearing_date':'2016-05-09', 'case_number': 'G11175136', 'parties': [{'name': 'Yang, Xiao Ran'}, {'name': 'Zhong, Xu Pu'}], 'hearing_type': 'FV', 'matter': 'Family Violence'}
 ];
 
-module.exports = CasesSeedLatest;
+var CasesSeedJune06 = [
+  {"list_number": "1", "matter": "Personal Safety Intervention Order", "case_number": "G11019981", "hearing_date":"2016-06-06", "hearing_type":"PSIO", "parties": [{'name': "(POL) Clohesy, Blair"},{'name': "Byrne, Dwayne"}]},
+  {"list_number": "2", "matter": "Family Violence", "case_number": "G10216029", "hearing_date":"2016-06-06", "hearing_type":"FV", "parties": [{'name': "(POL) Guled, Amran"},{'name': "Osman, Aynan M"}]},
+  {"list_number": "3", "matter": "Family Violence", "case_number": "G10749625", "hearing_date":"2016-06-06", "hearing_type":"APPL", "parties": [{'name': "(POL) Koutras, Vivi"},{'name': "Al-Kufy, Firas"}]},
+  {"list_number": "4", "matter": "Ap. For Variation", "case_number": "G11047862", "hearing_date":"2016-06-06", "hearing_type":"APPL", "parties": [{'name': "(POL) Rooks, Melissa"},{'name': "Giannioudis, Zoe"}]},
+  {"list_number": "5", "matter": "Family Violence", "case_number": "G10519748", "hearing_date":"2016-06-06", "hearing_type":"APPL", "parties": [{'name': "(POL) Rooks, Melissa"},{'name': "Giannioudis, Zoe"}]},
+  {"list_number": "6", "matter": "Family Violence", "case_number": "F12479235", "hearing_date":"2016-06-06", "hearing_type":"APPL", "parties": [{'name': "(POL) Spano, Anna"},{'name': "Acar, Ayhan"}]},
+  {"list_number": "7", "matter": "Family Violence", "case_number": "G11287656", "hearing_date":"2016-06-06", "hearing_type":"FV", "parties": [{'name': "(POL) Tse, Sarah"},{'name': "Tse, Allen"}]},
+  {"list_number": "8", "matter": "Ap. For Variation", "case_number": "F12479235", "hearing_date":"2016-06-06", "hearing_type":"Appl", "parties": [{'name': "Acar, Ayhan"},{'name': "Spano, Anna"}]},
+  {"list_number": "9", "matter": "Family Violence", "case_number": "G11159373", "hearing_date":"2016-06-06", "hearing_type":"FV", "parties": [{'name': "Ahmed, Rowda"},{'name': "Aden, Said"}]},
+  {"list_number": "10", "matter": "Personal Safety Intervention Order", "case_number": "G11309230", "hearing_date":"2016-06-06", "hearing_type":"PSIO", "parties": [{'name': "Burns, Latham D"},{'name': "Cayli, Sinan"}]},
+  {"list_number": "11", "matter": "Family Violence", "case_number": "G11406267", "hearing_date":"2016-06-06", "hearing_type":"FV", "parties": [{'name': "Evans, Mikaelie Aysha"}, {'name': "Lewis, James Eion Ard"}]},
+  {"list_number": "12", "matter": "Personal Safety Intervention Order", "case_number": "G11086176", "hearing_date":"2016-06-06", "hearing_type":"PSIO", "parties": [{'name': "Garrick, Clea"},{'name': "Gosper, Linsey"}]},
+  {"list_number": "13", "matter": "Personal Safety Intervention Order", "case_number": "G11143115", "hearing_date":"2016-06-06", "hearing_type":"PSIO", "parties": [{'name': "Gosper, Linsey"},{'name': "Garrick, Clea"}]},
+  {"list_number": "14", "matter": "Personal Safety Intervention Order", "case_number": "G11143206", "hearing_date":"2016-06-06", "hearing_type":"PSIO", "parties": [{'name': "Gosper, Linsey"},{'name': "Mason, Benjamin"}]},
+  {"list_number": "15", "matter": "Ap. for Revocation", "case_number": "G10216029", "hearing_date":"2016-06-06", "hearing_type":"APPL", "parties": [{'name': "Guled, Amran"},{'name': "Osman, Aynan M"}]},
+  {"list_number": "16", "matter": "Family Violence", "case_number": "G11439656", "hearing_date":"2016-06-06", "hearing_type":"FV", "parties": [{'name': "Hollins, Jacob"},{'name': "Devcich, Alyse"}]},
+  {"list_number": "17", "matter": "Personal Safety Intervention Order", "case_number": "G11076962", "hearing_date":"2016-06-06", "hearing_type":"PSIO", "parties": [{'name': "Jones, Simon P"},{'name': "Stein, Grant"}]},
+  {"list_number": "18", "matter": "Family Violence", "case_number": "G11076088", "hearing_date":"2016-06-06", "hearing_type":"FV", "parties": [{'name': "Langdon, Molly-Rose"},{'name': "Stein, Grant"}]},
+  {"list_number": "19", "matter": "Family Violence", "case_number": "G11367973", "hearing_date":"2016-06-06", "hearing_type":"FV", "parties": [{'name': "Lestrange, Amanda"},{'name': "Egglestone, Aaron"}]},
+  {"list_number": "20", "matter": "Personal Safety Intervention Order", "case_number": "G11086438", "hearing_date":"2016-06-06", "hearing_type":"PSIO", "parties": [{'name': "Mason, Benjamin"},{'name': "Gosper, Linsey"}]},
+  {"list_number": "21", "matter": "Family Violence", "case_number": "G11350846", "hearing_date":"2016-06-06", "hearing_type":"FV", "parties": [{'name': "Reiter, Kristen"},{'name': "Taylor, Michael"}]},
+  {"list_number": "22", "matter": "Family Violence", "case_number": "G11238744", "hearing_date":"2016-06-06", "hearing_type":"FV", "parties": [{'name': "Shapartanis, Paul"},{'name': "Shapartanis, Elizabeth"}]},
+  {"list_number": "23", "matter": "Ap. For Variation", "case_number": "G10261402", "hearing_date":"2016-06-06", "hearing_type":"PSIO", "parties": [{'name': "(POL) Mackog, Alval"},{'name': "Akot, Fasco"}]},
+  {"list_number": "24", "matter": "Personal Safety Intervention Order", "case_number": "G11498918", "hearing_date":"2016-06-06", "hearing_type":"FV", "parties": [{'name': "(POL) Delaney, Corey"},{'name': "Fontane, Mark"}]},
+  {"list_number": "25", "matter": "Personal Safety Intervention Order", "case_number": "G11337632", "hearing_date":"2016-06-06", "hearing_type":"FV", "parties": [{'name': "Omar, Mohamed"},{'name': "Hammond, Anthony"}]},
+  {"list_number": "26", "matter": "Family Violence", "case_number": "G11501536", "hearing_date":"2016-06-06", "hearing_type":"FV", "parties": [{'name': "(POL) Culhane, Lisa"},{'name': "Merry, David"}]},
+  {"list_number": "27", "matter": "Ap. For Variation", "case_number": "G11092088", "hearing_date":"2016-06-06", "hearing_type":"FV", "parties": [{'name': "(POL) Garoni, Jay"},{'name': "Millman, Kate"}]},
+  {"list_number": "28", "matter": "Family Violence", "case_number": "", "hearing_date":"2016-06-06", "hearing_type":"FV", "parties": [{'name': "(POL) Gomez, Rachel"},{'name': "Naidu, Jasuhta"}]},
+  {"list_number": "29", "matter": "Family Violence", "case_number": "", "hearing_date":"2016-06-06", "hearing_type":"FV", "parties": [{'name': "(POL) Tossoun, Amy"},{'name': "Tossoun Fady"}]},
+  {"list_number": "30", "matter": "Family Violence", "case_number": "", "hearing_date":"2016-06-06", "hearing_type":"FV", "parties": [{'name': "(POL) Mohr, Joel"},{'name': "Mohr, Yukan"}]},
+  {"list_number": "31", "matter": "Personal Safety Intervention Order", "case_number": "", "hearing_date":"2016-06-06", "hearing_type":"FV", "parties": [{'name': "(POL) Seddon, Jodie"},{'name': "Warren, Allen"}]}
+];
+
+
+module.exports = CasesSeedJune06;

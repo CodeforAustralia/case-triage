@@ -32,8 +32,8 @@ html
     link(rel='stylesheet', href='/triage/static/css/njc-base.css')
     link(rel="stylesheet/less", type="text/css", href='/triage/static/less/app.less')
     script(type="text/javascript", src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.5.3/less.min.js")
-    if !appConfig || appConfig.env || appConfig.env === 'development'
-      script(type="text/javascript", src="http://localhost:8080/webpack-dev-server/build/bundle.js")
+    if !env || env === 'development'
+      script(type="text/javascript", src="http://localhost:8080/build/bundle.js")
     else
       script(type="text/javascript", src="/triage/static/build/bundle.js")
 

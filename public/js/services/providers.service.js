@@ -15,7 +15,7 @@ module.exports = function(app){
       {"id":5,"name":"Court Network"},
       {"id":6,"name":"Launch Housing"},
       {"id":7,"name":"Salvation Army"},
-      {"id":8,"name":"cohealth - Casework Counsellor"},
+      {"id":8,"name":"Cohealth - Casework Counsellor"},
       {"id":9,"name":"Odyssey House"},
       {"id":10,"name":"Fitzroy Legal Service"},
       {"id":11,"name":"Victoria Legal Aid"},

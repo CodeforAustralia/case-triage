@@ -59,7 +59,6 @@ app.use(morgan('combined', {stream: accessLogStream}));
 // add passport for authentication
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
-app.use(express.static(path.join(__dirname, 'public')));
 
 // configure passport - add passport middleware and setup
 if (_.isUndefined(config.PASSPORT_SECRET) || config.PASSPORT_SECRET === "<your-passport-secret>") throw new Error(error("You must set a your own unique PASSPORT_SECRET in your environment variables"));

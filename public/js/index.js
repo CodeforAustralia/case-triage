@@ -43,6 +43,9 @@ require('./directives/cases-table.directive')(app);
 require('./directives/case-details.directive')(app);
 require('./directives/interactions.directive')(app);
 
+// filters
+require('./filters/case-hearing-date.filter.js')(app);
+
 // services
 require('./services/alert.service')(app);
 require('./services/auth.service')(app);

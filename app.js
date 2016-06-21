@@ -80,10 +80,45 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/triage/static', express.static('public'));
 
 app.use('/', routes);
-app.use('/users', users);
-app.use('/api/cases', cases);
-app.use('/api/auth', auth);
-app.use('/migrations', migrations);
+//app.use('/users', users);
+//app.use('/api/auth', auth);
+
+/**************************
+*   AUTHENTICATED ROUTES  *
+***************************/
+
+// Routes that appear after the auth middleware require token auth
+
+// should really be in a seperate function / helpers?
+app.use(function(req, res, next){
+  // check the header, or url, or post params for the token
+  var token = req.token;
+  if (token){
+
+    // decode and verify the token
+    jwt.verify(token, config.TOKEN_SECRET, function(err, decoded_token){
+      if (err){
+        return res.json({
+          success: false,
+          message: "Failed to authenticate token"
+        });
+      }
+      else {
+        // add the token to the req and move on to the next middleware
+        req.decoded_token = decoded_token;
+        next();
+      }
+    });
+  }
+  else {
+    // we require a token, so return a 403 if there isnt one
+    return res.status(403).send({
+      success: false,
+      message: 'No token provided'
+    });
+  }
+});
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

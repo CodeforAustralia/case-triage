@@ -5,6 +5,8 @@ var flash = require('express-flash');
 var router = express.Router();
 var helpers = require('../helpers');
 var AuthUser = require('../models/authUser');
+var jwt = require('jsonwebtoken'); //create, sign, and verify authentication tokens
+var config = process.env;
 
 // The login form is submitted to the server via the POST method. Using authenticate() with the local strategy will handle the login request.
 router.post('/login',
@@ -27,6 +29,35 @@ router.post('/seeder', function(req, res, err){
   });
 
 });
+
+router.post('/token',
+  passport.authenticate('local'),
+  function(req, res, next) {
+
+    // get the user naem
+    var user = {
+      username: req.body.username
+    };
+
+    // passport handles errors in its middleware
+    // generate a token and send it back
+    var token = jwt.sign(user, config.TOKEN_SECRET, {
+      expiresIn: "24h"
+    });
+
+    AuthUser.find({'username':user.username}, function(err, u){
+      if (err) return res.status(500);
+
+      res.json({
+        success: true,
+        message: "authenticated",
+        token: token,
+        user: u
+      });
+    });
+  }
+);
+
 
 router.get('/logout', function(req, res) {
   console.log("Logging out");

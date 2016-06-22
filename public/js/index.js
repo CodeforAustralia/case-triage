@@ -1,9 +1,11 @@
 var angular = require('angular');
 
 // require our 3rd party modules
+require('angular-base64');
 require('angular-cache');
 require('angular-formly');
 require('angular-formly-templates-bootstrap');
+require('angular-local-storage');
 require('angular-moment');
 require('angular-resource');
 require('angular-sanitize');
@@ -23,7 +25,9 @@ var app = angular.module('njcTriage', [
     'formly',
     'formlyBootstrap',
     'mgcrea.ngStrap',
-    'toastr'
+    'toastr',
+    'LocalStorageModule',    
+    'base64',
   ]);
 
 // main app
@@ -50,7 +54,11 @@ require('./filters/case-hearing-date.filter.js')(app);
 require('./services/alert.service')(app);
 require('./services/auth.service')(app);
 require('./services/cases.service')(app);
+require('./services/client.service')(app);
 require('./services/hearing-types.service')(app);
+require('./services/http-interceptor.service')(app);
 require('./services/matters.service')(app);
 require('./services/interactions.service')(app);
 require('./services/providers.service')(app);
+require('./services/session.service')(app);
+require('./services/token.service')(app);

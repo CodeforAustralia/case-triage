@@ -13,9 +13,11 @@
   },
   "dependencies": {
     "angular": "^1.5.5",
+    "angular-base64": "^2.0.5",
     "angular-cache": "^4.6.0",
     "angular-formly": "^8.2.0",
     "angular-formly-templates-bootstrap": "^6.4.0",
+    "angular-local-storage": "^0.2.7",
     "angular-moment": "^1.0.0-beta.6",
     "angular-resource": "^1.5.5",
     "angular-sanitize": "^1.5.5",
@@ -58,9 +60,11 @@
   },
   "devDependencies": {
     "angular": "^1.5.5",
+    "angular-base64": "^2.0.5",
     "angular-cache": "^4.6.0",
     "angular-formly": "^8.2.0",
     "angular-formly-templates-bootstrap": "^6.4.0",
+    "angular-local-storage": "^0.2.7",
     "angular-moment": "^1.0.0-beta.6",
     "angular-resource": "^1.5.5",
     "angular-sanitize": "^1.5.5",

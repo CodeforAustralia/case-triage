@@ -5,7 +5,7 @@ module.exports = function(app){
   app.controller('LoginController', LoginController);
 
   /*@ngInject*/
-  function LoginController($scope, $log, $rootScope, $modal, AuthService){
+  function LoginController($scope, $log, $rootScope, $modal, $state, AuthService, AlertService){
     $log.log("Starting the LoginController");
     var vm = this;
     //vm.model = new Entry(); // create a new instance of the entry model
@@ -34,7 +34,14 @@ module.exports = function(app){
     }];
 
     vm.submit = function(){
-      AuthService.attempt(vm.model.username, vm.model.password);
+      AuthService
+        .attempt(vm.model.username, vm.model.password)
+        .then(function(resp){
+          AlertService.success("Logging in");
+          $state.go('home');
+        }, function(err){
+          AlertService.error("Incorrect username / password");
+        });
     };
 
     function init(){

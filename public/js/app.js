@@ -3,10 +3,13 @@ module.exports = function(app){
   var angular = require('angular');
   // App bootstrapping + DI
   /*@ngInject*/
-  app.config(function($urlRouterProvider){
+  app.config(function($urlRouterProvider, $httpProvider){
       // route the default state to the app home
       $urlRouterProvider.when('', '/cases');
       $urlRouterProvider.when('/', '/cases');
+
+      // register the http interceptor
+      $httpProvider.interceptors.push('AuthInterceptor');
     })
     .config(function (CacheFactoryProvider, $collapseProvider) {
       angular.extend(CacheFactoryProvider.defaults, { maxAge: 15 * 60 * 1000 });

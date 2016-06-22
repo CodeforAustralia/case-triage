@@ -81,7 +81,7 @@ app.use('/triage/static', express.static('public'));
 
 app.use('/', routes);
 //app.use('/users', users);
-//app.use('/api/auth', auth);
+app.use('/api/authenticate', auth); // token based auth route
 
 /**************************
 *   AUTHENTICATED ROUTES  *
@@ -118,6 +118,9 @@ app.use(function(req, res, next){
     });
   }
 });
+
+// Routes
+app.use('/api/cases', cases);
 
 
 // catch 404 and forward to error handler

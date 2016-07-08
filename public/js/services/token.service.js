@@ -41,8 +41,7 @@ module.exports = function(app){
 
 		return {
       isAuthenticated: function(){
-				//return checkAuth();
-				return true;
+				return checkAuth();
 			},
       save: saveToken,
       get: getToken,

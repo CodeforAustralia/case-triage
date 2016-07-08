@@ -1,9 +1,9 @@
 module.exports = function(app){
 'use strict';
 
-// Authentication service, returns a resource
-/*@ngInject*/
-app.service('AuthService', function($log, $http, $sanitize, TokenService){
+	// Authentication service, returns a resource
+	/*@ngInject*/
+	app.service('AuthService', function($log, $http, $q, $sanitize, AlertService, TokenService){
 		return {
 			isAuthenticated: function(){
 				return TokenService.isAuthenticated();

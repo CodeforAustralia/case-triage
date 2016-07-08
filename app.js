@@ -13,6 +13,8 @@ var mongoose = require('mongoose');
 var morgan = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var bearerToken = require('express-bearer-token');
+var jwt = require('jsonwebtoken'); //create, sign, and verify authentication tokens
 
 // models
 var authUser = require('./models/authUser');
@@ -86,6 +88,13 @@ app.use('/api/authenticate', auth); // token based auth route
 /**************************
 *   AUTHENTICATED ROUTES  *
 ***************************/
+
+app.use(bearerToken({
+  bodyKey: 'access_token',
+  queryKey: 'access_token',
+  headerKey: 'Bearer',
+  reqKey: 'token'
+}));
 
 // Routes that appear after the auth middleware require token auth
 

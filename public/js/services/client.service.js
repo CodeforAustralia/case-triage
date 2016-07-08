@@ -39,7 +39,7 @@ module.exports = function(app){
       isAdmin: function(){
         $log.log("Is the client an admin?");
         var client = this.get();
-        if (!client || !client.is_admin) return false;
+        if (!client) return false;
         return client.is_admin;
       },
   		fetch: fetchClientFromCache,

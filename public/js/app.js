@@ -107,8 +107,8 @@ module.exports = function(app){
   	.state('cases.index', {
   		url: '/cases',
       authenticate : true,
-  		templateUrl: 'js/partials/cases.index.html',
-  		controller: 'CasesIndexController',
+  		templateUrl: 'js/partials/cases.dashboard.html',
+  		controller: 'CasesDashboardController',
       controllerAs: 'vm',
       resolve: {
       }

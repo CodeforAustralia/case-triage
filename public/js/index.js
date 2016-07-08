@@ -26,7 +26,7 @@ var app = angular.module('njcTriage', [
     'formlyBootstrap',
     'mgcrea.ngStrap',
     'toastr',
-    'LocalStorageModule',    
+    'LocalStorageModule',
     'base64',
   ]);
 
@@ -34,6 +34,7 @@ var app = angular.module('njcTriage', [
 require('./app')(app);
 
 // controllers
+require('./controllers/cases.dashboard')(app);
 require('./controllers/cases.details')(app);
 require('./controllers/cases.index')(app);
 require('./controllers/cases.update')(app);
@@ -42,8 +43,11 @@ require('./controllers/login.controller')(app);
 require('./controllers/outcomes.update')(app);
 
 // directives
+require('./directives/cases-filters.directive')(app);
+require('./directives/cases-list.directive')(app);
 require('./directives/cases-panels.directive')(app);
 require('./directives/cases-table.directive')(app);
+require('./directives/case-party.directive')(app);
 require('./directives/case-details.directive')(app);
 require('./directives/interactions.directive')(app);
 

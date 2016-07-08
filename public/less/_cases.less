@@ -11,3 +11,70 @@
     padding:0;
   }
 }
+
+.case-meta {
+  padding:0.5em 0;
+}
+
+.case-parties {
+  border-bottom:dotted @dark-grey 1px;
+  width:100%;
+  padding-bottom:0.5em;
+}
+
+.case-party {
+  font-weight:100;
+  background:@white;
+  padding:0.25em 0;
+  border-bottom:1px dotted @light-grey;
+  .case-party-actions, .case-party-conflict, .case-party-title, .case-party-services-list {
+    vertical-align: center;
+  }
+  .case-party-actions {text-align: right;}
+  .case-party-conflict { color:@red; }
+  .case-party-title {
+    font-weight:bold;
+  }
+
+  .case-party-service {
+    font-size:smaller;
+  }
+
+  .case-party-services-list {
+    margin:0;padding:0;
+    li {display:inline;margin-right:0.125em;}
+  }
+}
+
+// define the colours
+@cols:#EB6361,#25373D,#F04903,#F29B34,#71BA51,#EBBD63,#3D8EB9,#E6DCDB,
+#BADA55,#EB9532,#AAB69B,#2C82C9,#F1654C,#83D6DE,#97CE68,#897FBA,#F1654C,
+#E26E67,#B0DACC,#7BB0A6;
+
+// text color to be use
+@text: @white, @white, @white, @white, @white, @black, @white, @black, @black,
+@white, @black, @white, @white, @black, @black, @white, @white, @white, @black, @white;
+
+// how many services do we have
+@num-services:20;
+
+// make the colours
+.makeCols(@cols, @text, @i) when (@i > 0) {
+    @index:(@i);
+    /* create the current tile rule */
+    // use the built in extract function in less to obtain the color from the list we passed in
+    .bg-col-@{i} { background-color: extract(@cols, @index); color: extract(@text, @index);}
+    .col-@{i} { color: extract(@cols, @index);}
+
+     // next iteration
+    .makeCols(@cols, @text, (@i - 1));
+}
+
+.case-parties,
+.cases-filters {
+  // generate bg col and col properties using a mixin
+  // mixin with a guard to create a series of bamboo tiles
+
+  // create bamboo tiles numbered 0-8
+  .makeCols(@cols, @text, @num-services);
+}

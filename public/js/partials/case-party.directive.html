@@ -1,0 +1,22 @@
+<div class="case-party row">
+  <div class="case-party-title col-xs-3">
+    <span>{{ vm.party.name }}</span>
+  </div>
+  <div class="case-party-conflict col-xs-2">
+    <span ng-if="vm.conflicted">Double Conflict</span>
+  </div>
+  <div class="case-party-services col-xs-5">
+    <!--<pre>
+      {{ vm.services | json }}
+    </pre>-->
+    <ul ng-if="vm.services.length > 0" class="case-party-services-list">
+      <li class="case-party-service {{ service.color }}" ng-repeat="service in vm.services">
+        <span class="text">{{ service.shortname }}</span>
+      </li>
+    </ul>
+    <p ng-if="!vm.services">No services assigned yet!</p>
+  </div>
+  <div class="case-party-actions col-xs-2">
+    <button class="btn btn-action" ui-sref="cases.update({id: vm.meta.case_number, party: vm.party._id})">Update</button>
+  </div>
+</div>

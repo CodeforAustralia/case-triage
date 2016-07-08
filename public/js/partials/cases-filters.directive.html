@@ -1,0 +1,22 @@
+<div class="cases-filters component">
+  <div class="row component-row">
+    <h1 class="col-xs-10 page-subtitle">Refine</h1>
+    <span class="col-xs-2 text-right fa fa-filter"></span>
+  </div>
+  <div class="row component-row">
+    <div class="col-xs-12">
+      <select ng-model="vm.filters.hearing_date" ng-options="date.date for date in vm.hearingDates"></select>
+    </div>
+  </div>
+  <div class="row component-row">
+    <div class="col-xs-12">
+      <ul class="no-bullets">
+        <li ng-repeat="service in vm.services">
+          <span class="{{ service.colour }} fa fa-circle"></span>&nbsp;
+          {{ service.name }}&nbsp;
+          <input type="checkbox" ng-model=vm.filters.service_providers[service.name] />
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

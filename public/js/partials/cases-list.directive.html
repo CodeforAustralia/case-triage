@@ -1,0 +1,20 @@
+<div class="cases-list component">
+  <!--<pre>{{ vm.cases | json }}</pre>-->
+  <div class="row">
+    <div class="col-xs-12">
+      <h1 class="page-subtitle">Cases</h1>
+    </div>
+  </div>
+  <div class="case-list-summary">
+    <div class="case" ng-repeat="case in vm.cases">
+      <div class="case-meta row">
+        <div class="col-xs-12">
+          Case {{ case.meta.case_number }} | {{ case.meta.hearing_type }} - {{ case.meta.matter }}
+        </div>
+      </div>
+      <div class="case-parties container">
+        <case-party ng-repeat="party in case.parties" party="party" meta="case.meta"></case-list-party>
+      </div>
+    </div>
+  </div>
+</div>

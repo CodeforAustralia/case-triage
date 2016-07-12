@@ -31,7 +31,11 @@ module.exports = function(app){
     .config(function($datepickerProvider) {
       angular.extend($datepickerProvider.defaults, {
         dateFormat: 'dd/MM/yyyy',
-        startWeek: 1
+        startWeek: 1,
+        modelDateFormat: 'yyyy-MM-dd HH:mm:ss',
+        autoclose: true,
+        iconLeft: 'fa fa-angle-double-left',
+        iconRight: 'fa fa-angle-double-right'
       });
     })
     .config(stateConfig)
@@ -72,7 +76,7 @@ module.exports = function(app){
       }
   	})
     .state('auth.logout', {
-  		url: '/login',
+  		url: '/logout',
   		controller: function($scope, AuthService, $state){
         AuthService
           .logout()

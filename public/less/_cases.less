@@ -74,7 +74,15 @@
 .cases-filters {
   // generate bg col and col properties using a mixin
   // mixin with a guard to create a series of bamboo tiles
-
+  /*select {
+    padding:0.5em 0.25em;
+    border-radius:0;
+    -webkit-border-radius:0;
+    -moz-border-radius:0;
+    -ms-border-radius:0;
+    width:100%;
+    background:@white;
+  }*/
   // create bamboo tiles numbered 0-8
   .makeCols(@cols, @text, @num-services);
 }

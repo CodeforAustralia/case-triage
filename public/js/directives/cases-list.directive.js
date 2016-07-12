@@ -11,6 +11,7 @@ module.exports = function(app){
       controllerAs: 'vm',
       bindToController: true,
       scope: {
+        'filters': '=',
         'cases': '=',
       },
       link: function(scope, elem, attrs){
@@ -22,9 +23,9 @@ module.exports = function(app){
     };
   });
 
-  function CasesListsController(){
+  /*@ngInject*/
+  function CasesListsController($log){
     var vm = this;
-
   }
 
 };

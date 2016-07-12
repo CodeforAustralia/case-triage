@@ -2,19 +2,29 @@
   <!--<pre>{{ vm.cases | json }}</pre>-->
   <div class="row">
     <div class="col-xs-12">
-      <h1 class="page-subtitle">Cases</h1>
+      <h1 class="page-subtitle">
+        Cases&nbsp;
+        <span ng-if='vm.filters.hearing_date'> - {{ vm.filters.hearing_date | date:"dd MMM, yyyy" }}</span>
+        <!--<span ng-if='!vm.filters.hearing_date'> - All dates</span>-->
+      </h1>
     </div>
   </div>
   <div class="case-list-summary">
-    <div class="case" ng-repeat="case in vm.cases">
+    <div class="case" ng-repeat="case in filtered = (vm.cases | filter:vm.filters.keywords | caseHearingDateFilter:vm.filters.hearing_date | caseServicesFilter:vm.filters.service_providers_array) | orderBy:['meta.hearing_date', 'meta.list_number','meta.case_number','meta.hearing_type']">
       <div class="case-meta row">
-        <div class="col-xs-12">
+        <div class="col-xs-8">
           Case {{ case.meta.case_number }} | {{ case.meta.hearing_type }} - {{ case.meta.matter }}
+        </div>
+        <div class="col-xs-4 text-right">
+          <small>{{ case.meta.hearing_date | date:"dd MMM, yyyy" }}</small>
         </div>
       </div>
       <div class="case-parties container">
         <case-party ng-repeat="party in case.parties" party="party" meta="case.meta"></case-list-party>
       </div>
+    </div>
+    <div class="" ng-if="filtered.length < 1">
+      <h4>No matching cases!</h4>
     </div>
   </div>
 </div>

@@ -5,6 +5,7 @@
 body {
   font-family: "Roboto", "helvetica", "verdana", "sans-serif";
   font-size: 12pt;
+  margin:0;
 }
 main,
 .global-header,

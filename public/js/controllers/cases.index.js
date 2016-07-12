@@ -22,20 +22,21 @@ module.exports = function(app){
       return String(str);
     }
 
-    vm.hearing_dates = _.map(vm.cases, function(c){
-      $log.log("Hearing date: ");
-      $log.log(c.meta.hearing_date);
-      //return c.meta.hearing_date;
-      var d = new Date(c.meta.hearing_date);
-      $log.log(d);
-      return d.getUTCFullYear() + "-" + zero_pad(d.getUTCMonth() + 1) + "-" + zero_pad(d.getUTCDate());
-    });
-    $log.log("HEARING DATES");
-    vm.hearing_dates = _.uniq(vm.hearing_dates);
+    vm.hearing_dates =
+      _(vm.cases)
+      .map(function(c){
+        $log.log("Hearing date: ");
+        $log.log(c.meta.hearing_date);
+        //return c.meta.hearing_date;
+        var d = new Date(c.meta.hearing_date);
+        $log.log(d);
+        return d.getUTCFullYear() + "-" + zero_pad(d.getUTCMonth() + 1) + "-" + zero_pad(d.getUTCDate());
+      })
+      .uniq()
+      .sort()
+      .reverse()
+      .value();
 
-
-    vm.hearing_dates = vm.hearing_dates.sort().reverse();
-    $log.log(vm.hearing_dates);
     vm.hearing_date = vm.hearing_dates[0];
 
     filterByHearingDate();

@@ -8,10 +8,10 @@
 <section id="page-content" class="container-fluid">
   <div class="row">
     <div class="col-xs-12 col-sm-3">
-      <cases-filters hearing-dates="vm.hearing_dates" services="vm.service_providers"></cases-filters>
+      <cases-filters services="vm.service_providers" filters="vm.filters"></cases-filters>
     </div>
     <div class="col-xs-12 col-sm-9">
-      <cases-list cases="vm.cases"></cases-list>
+      <cases-list cases="vm.cases" filters="vm.filters"></cases-list>
     </div>
   </div>
 </section>

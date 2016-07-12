@@ -16,6 +16,11 @@ require('angular-ui-router');
 require('lodash');
 require('moment');
 
+require('npm/bootstrap-additions/dist/bootstrap-additions.css');
+require('npm/angular-toastr/dist/angular-toastr.css');
+require('npm/angular-spinkit/src/angular-spinkit.css');
+
+
 // create the app module
 var app = angular.module('njcTriage', [
     'ui.router',
@@ -53,6 +58,7 @@ require('./directives/interactions.directive')(app);
 
 // filters
 require('./filters/case-hearing-date.filter.js')(app);
+require('./filters/case-services.filter.js')(app);
 
 // services
 require('./services/alert.service')(app);

@@ -8,12 +8,17 @@ module.exports = function(app){
   function CasesDashboardController($scope, $log, Cases, Providers, Interactions){
 
     var vm = this;
-    vm.filter = {};
+    vm.filters = {
+      'service_providers_array': [],
+      'service_providers': {},
+      'keywords': '',
+      'hearing_date': '' // should default to the most recent hearing date?
+    };
     vm.cases = Cases.data;
     vm.service_providers = _.orderBy(Providers, ['name'], ['asc']);
     vm.interaction_types = _.orderBy(Interactions, ['id'], ['asc']);
 
-    vm.hearing_dates = hearingDates();
+    //vm.hearing_dates = hearingDates();
 
     // set the colors for each service
     vm.service_providers = setColorProperty(vm.service_providers);
@@ -22,18 +27,17 @@ module.exports = function(app){
       vm.filter = provider;
     };
 
+    setAllProviders();
+
     function init(){
       $log.log("Loaded the cases dashboard controller");
     }
 
-    function hearingDates(){
-      var dates = [
-        {date: "2016-07-04"},
-        {date: "2016-06-27"},
-        {date: "2016-06-20"},
-        {date: "2016-06-13"},
-      ];
-      return dates;
+    function setAllProviders(){
+      _(Providers)
+      .each(function(provider){
+        vm.filters.service_providers[provider.name] = false;
+      });
     }
 
     function setColorProperty(list){

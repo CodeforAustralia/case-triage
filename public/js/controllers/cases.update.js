@@ -13,11 +13,21 @@ module.exports = function(app){
     vm.interaction_types = _.orderBy(Interactions, ['id'], ['asc']);
     vm.party = _.find(vm.case.parties, {'_id': $stateParams.party});
     vm.model = vm.party;
-    vm.model = _.extend(vm.party, {
-      attended: vm.party.attended || false,
-      age: vm.party.age || null,
-      birthday: vm.party.birthday || null,
-    });
+
+    if (vm.party){
+      vm.model = _.extend(vm.party, {
+        attended: vm.party.attended || false,
+        age: vm.party.age || null,
+        birthday: vm.party.birthday || null,
+      });
+    }
+    else {
+      vm.model = _.extend(vm.party, {
+        attended: false,
+        age: null,
+        birthday: null,
+      });
+    }
     vm.interaction = {};
     vm.fields = {};
 

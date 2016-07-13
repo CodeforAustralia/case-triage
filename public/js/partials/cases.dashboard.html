@@ -7,6 +7,13 @@
 </header>-->
 <section id="page-content" class="container-fluid">
   <div class="row">
+    <div class="col-xs-12 text-right">
+      <button type="button" class="btn btn-primary" onClick="vm.exportCases()">
+        Export all cases&nbsp;<span class="fa fa-download" />
+      </button>
+    </div>
+  </div>
+  <div class="row">
     <div class="col-xs-12 col-sm-3">
       <cases-filters services="vm.service_providers" filters="vm.filters"></cases-filters>
     </div>

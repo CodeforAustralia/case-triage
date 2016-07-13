@@ -17,6 +17,8 @@
     <p ng-if="!vm.services">No services assigned yet!</p>
   </div>
   <div class="case-party-actions col-xs-2">
-    <button class="btn btn-action" ui-sref="cases.update({id: vm.meta.case_number, party: vm.party._id})">Update</button>
+    <button class="btn btn-action" ui-sref="cases.update({id: vm.meta.case_number, party: vm.party._id})">
+      Update&nbsp;<span class="fa fa-pencil" />
+    </button>
   </div>
 </div>

@@ -5,7 +5,7 @@ module.exports = function(app){
   app.controller('CasesDashboardController', CasesDashboardController);
 
   /*@ngInject*/
-  function CasesDashboardController($scope, $log, Cases, Providers, Interactions){
+  function CasesDashboardController($scope, $log, Cases, CasesService, Providers, Interactions){
 
     var vm = this;
     vm.filters = {
@@ -18,13 +18,16 @@ module.exports = function(app){
     vm.service_providers = _.orderBy(Providers, ['name'], ['asc']);
     vm.interaction_types = _.orderBy(Interactions, ['id'], ['asc']);
 
-    //vm.hearing_dates = hearingDates();
-
     // set the colors for each service
     vm.service_providers = setColorProperty(vm.service_providers);
 
     vm.setProviderFilter = function(provider){
       vm.filter = provider;
+    };
+
+    vm.exportCases = function(){
+      return CasesService
+        .export();
     };
 
     setAllProviders();

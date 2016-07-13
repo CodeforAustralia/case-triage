@@ -91,6 +91,9 @@ module.exports = function(app){
       },
       update: function(new_data){
         return updateCase(new_data);
+      },
+      export: function(){
+        return $http.get("/api/cases/export", _case);        
       }
     };
   }

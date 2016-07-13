@@ -5,7 +5,7 @@ module.exports = function(app){
   app.controller('CasesIndexController', CasesIndexController);
 
   /*@ngInject*/
-  function CasesIndexController($scope, $log, Cases, Providers){
+  function CasesIndexController($scope, $log, Cases, Providers, CasesService){
 
     var vm = this;
     vm.filter = {};

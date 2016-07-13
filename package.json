@@ -1,6 +1,6 @@
 {
   "name": "triage",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "private": true,
   "engines": {
     "node": "5.8.0"
@@ -47,6 +47,7 @@
     "font-awesome-webpack": "0.0.4",
     "jade": "1.9.2",
     "jquery": "^2.2.3",
+    "json2csv": "^3.6.1",
     "jsonwebtoken": "^7.0.1",
     "less": "^2.7.0",
     "lodash": "^4.11.2",

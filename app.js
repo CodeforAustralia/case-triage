@@ -107,6 +107,7 @@ app.use(function(req, res, next){
     // decode and verify the token
     jwt.verify(token, config.TOKEN_SECRET, function(err, decoded_token){
       if (err){
+        // should redirect to login screen if this isnt a json request
         return res.json({
           success: false,
           message: "Failed to authenticate token"

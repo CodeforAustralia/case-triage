@@ -1,5 +1,4 @@
 <div class="cases-list component">
-  <!--<pre>{{ vm.cases | json }}</pre>-->
   <div class="row">
     <div class="col-xs-12">
       <h1 class="page-subtitle">
@@ -11,18 +10,32 @@
   </div>
   <div class="case-list-summary">
     <div class="case" ng-repeat="case in filtered = (vm.cases | filter:vm.filters.keywords | caseHearingDateFilter:vm.filters.hearing_date | caseServicesFilter:vm.filters.service_providers_array) | orderBy:['meta.hearing_date', 'meta.list_number','meta.case_number','meta.hearing_type']">
-      <div class="case-meta row">
-        <div class="col-xs-8">
-          Case {{ case.meta.case_number }} | {{ case.meta.hearing_type }} - {{ case.meta.matter }}
+      <div class="case-info">
+        <div class="row">
+          <div class="col-xs-8">
+            Case {{ ::case.meta.case_number }} | {{ ::case.meta.hearing_type }} - {{ ::case.meta.matter }}
+          </div>
+          <div class="col-xs-4 text-right">
+            <small>{{ ::case.meta.hearing_date | date:"dd MMM, yyyy" }}</small>
+          </div>
         </div>
-        <div class="col-xs-4 text-right">
-          <small>{{ case.meta.hearing_date | date:"dd MMM, yyyy" }}</small>
+        <div class="case-parties container">
+          <case-party ng-repeat="party in case.parties" party="party" meta="case.meta"></case-list-party>
         </div>
-      </div>
-      <div class="case-parties container">
-        <case-party ng-repeat="party in case.parties" party="party" meta="case.meta"></case-list-party>
+        <div class="row">
+          <div ng-if="case.outcomes && case.outcomes.length > 0" ng-repeat="outcome in case.outcomes" class="col-xs-12">
+            <p>Outcome: {{ outcome.outcome }}</p>
+            <p ng-if="outcome.adjournment_date">Adjourned until: {{ ::outcome.adjournment_date | date:"dd MMM, yyyy"  }}</p>
+            <p ng-if="outcome.notes">{{ ::outcome.notes }}</p>
+          </div>
+          <div ng-if="!case.outcomes || case.outcomes.length < 1" class="col-xs-12">
+            <button class="text-right btn btn-secondary" ui-sref="outcomes.update({id: case.meta.case_number})">Case outcomes</button>
+          </div>
+        </div>
+        <hr />
       </div>
     </div>
+
     <div class="" ng-if="filtered.length < 1">
       <h4>No matching cases!</h4>
     </div>

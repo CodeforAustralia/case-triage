@@ -19,7 +19,6 @@ module.exports = function(app){
     vm.interaction_types = _.orderBy(Interactions, ['id'], ['asc']);
 
     // set the colors for each service
-    vm.service_providers = setColorProperty(vm.service_providers);
 
     vm.setProviderFilter = function(provider){
       vm.filter = provider;
@@ -42,14 +41,7 @@ module.exports = function(app){
         vm.filters.service_providers[provider.name] = false;
       });
     }
-
-    function setColorProperty(list){
-      return _.map(list, function(item, key){
-        item.colour = 'col-' + (key+1);
-        return item;
-      });
-    }
-
+    
     init();
   }
 

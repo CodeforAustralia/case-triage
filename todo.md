@@ -1,5 +1,25 @@
 # TODO
 
+## Data
+[x] Get cases in,
+  - talk to brooke, eleanor, jess and
+[] add in the feedback options
+[x] Colours:
+  - red - berry st, police
+  - yellow - client services - everyone else
+  - Lawyers - blue, FLS VLA, Darebin
+  - green - DSCV
+  - interpreter - orange
+[x] add the abbreviation next to the name
+[] MATTER#8 PSIHOMANIS, SPIROS SHOULD NOT BE (POL)
+[] fix auth on live server, don't touch dev!!!
+[x] the order is weird...
+[x] EDIT NAMES:
+[x] HEARING DATE IS OUT BY 1 DAY.... CHECK (it looks like it is saved with date offset - should be UTC)
+[] FAILED: {"list_number":"18","case_number":"F12194260","hearing_date":"2016-07-17T14:00:00.000Z","hearing_type":"APPL","matter":"Ap. For Variation","parties":{"0":{"name":"ZATKOSKA, MARA"},"1":{"name":"ARU, DAMIAN"}}} - 409 conflict + killed app
+[] Show count for filters
+
+
 ## Wishlist
 * Getting the data in
 

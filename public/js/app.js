@@ -35,7 +35,8 @@ module.exports = function(app){
         modelDateFormat: 'yyyy-MM-dd HH:mm:ss',
         autoclose: true,
         iconLeft: 'fa fa-angle-double-left',
-        iconRight: 'fa fa-angle-double-right'
+        iconRight: 'fa fa-angle-double-right',
+        timezone: 'UTC'
       });
     })
     .config(stateConfig)
@@ -96,7 +97,7 @@ module.exports = function(app){
       resolve: {
         Providers: function($log, ProvidersService){
           $log.log("Resolve providers");
-          return ProvidersService.all();
+          return ProvidersService.allWithMetadata();
         },
         Interactions: function($log, InteractionsService){
           $log.log("Resolve interactions");

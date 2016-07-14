@@ -33,6 +33,11 @@ module.exports = function(app){
 
     vm.fields.meta = [
       {
+        name: 'name',
+        key: 'name',
+        type: 'input',
+      },
+      {
         name: 'attended',
         key: 'attended',
         type: 'checkbox',

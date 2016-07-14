@@ -38,6 +38,9 @@ var app = angular.module('njcTriage', [
 // main app
 require('./app')(app);
 
+// feedback module
+require('./feedback')(app);
+
 // controllers
 require('./controllers/cases.dashboard')(app);
 require('./controllers/cases.details')(app);

@@ -1,0 +1,27 @@
+<header class="container">
+  <div class="row page-nav">
+    <div class="col-xs-12">
+      <button ui-sref="cases.index" class="btn btn-secondary">Return</button>
+    </div>
+  </div>
+</header>
+<div id="feedback" class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h1>Submit your feedback</h1>
+    </div>
+  </div>
+  <div class="row page-content">
+    <form ng-if="!vm.submitted" class="col-xs-12 col-sm-6" method="post" enctype="multipart/form-data" ng-submit="vm.submit()">
+      <formly-form model="vm.model" fields="vm.fields">
+        <button class="btn btn-primary" type="submit">
+          <span class="fa fa-save"></span>&nbsp;Submit
+        </button>
+      </formly-form>
+    </form>
+    <div ng-if="vm.submitted" class="col-xs-12 col-sm-6">
+      <h2>Thanks!</h2>
+      <p>Thanks for your feedback!</p>
+    </div>
+  </div>
+</div>

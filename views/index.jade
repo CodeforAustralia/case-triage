@@ -1,18 +1,28 @@
 extends layout
 
 block content
-  header.global-header
-    .container-fluid
-      .row
-        .col-xs-12.col-sm-8
-          a.header-logo(href="/")
-            img(src="/triage/static/imgs/njc-logo.png")
-            h1.header-title NJC FV Cases
-        .col-xs-12.col-sm-4
-          nav.global-nav.text-right
-            ul
-              li
-                a(href="/#/logout") Logout
+  .global-header
+    .global-alert(data-offset-top='0', bs-affix='bs-affix')
+      .container-fluid.fixed
+        .row
+          p.col-xs-12
+            span.fa.fa-warning  
+            strong BETA 
+            | - We are still testing this, please&nbsp;
+            a.btn.btn-primary(ui-sref='feedback.create') submit any issues
+            |  you encounter
+    header
+      .container-fluid
+        .row
+          .col-xs-12.col-sm-8
+            a.header-logo(href="/")
+              img(src="/triage/static/imgs/njc-logo.png")
+              h1.header-title NJC FV Cases
+          .col-xs-12.col-sm-4
+            nav.global-nav.text-right
+              ul
+                li
+                  a(href="/#/logout") Logout
   main
     .page(ui-view)
   footer.global-footer

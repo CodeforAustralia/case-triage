@@ -32,7 +32,7 @@ module.exports = function(app){
     ];
 
     // map the service to a colour
-    var colors = {
+    /*var colors = {
       "Berry St":"col-1",
       "St Vincents Mental Health":"col-2",
       "Koori Justice Worker":"col-3",
@@ -53,7 +53,7 @@ module.exports = function(app){
       "Darebin community legal services":"col-18",
       "Police prosecutors":"col-19",
       "Client services":"col-20",
-    };
+    };*
 
     // map the service to a bg colour
     var bgColors = {
@@ -78,6 +78,55 @@ module.exports = function(app){
       "Darebin community legal services":"bg-col-18",
       "Police prosecutors":"bg-col-19",
       "Client services":"bg-col-20",
+    };*/
+
+    var colors = {
+      "Interpreter":"col-orange",
+      "DSCV":"col-green",
+      "Berry St":"col-red",
+      "Police prosecutors":"col-red",
+      "Darebin community legal services":"col-blue",
+      "Fitzroy Legal Service":"col-blue",
+      "Victoria Legal Aid":"col-blue",
+      "St Vincents Mental Health":"col-yellow",
+      "Koori Justice Worker":"col-yellow",
+      "Court Network":"col-yellow",
+      "Launch Housing":"col-yellow",
+      "Salvation Army":"col-yellow",
+      "Cohealth - Casework Counsellor":"col-yellow",
+      "Cohealth":"col-yellow",
+      "Odyssey House":"col-yellow",
+      "NEAMI":"col-yellow",
+      "New Hope":"col-yellow",
+      "CSV Drug and Alchohol":"col-yellow",
+      "Court Officer":"col-yellow",
+      "Duty Worker":"col-yellow",
+      "Client services":"col-yellow",
+    };
+
+    // map the service to a bg colour
+    var bgColors = {
+      "Interpreter":"bg-col-orange",
+      "DSCV":"bg-col-green",
+      "Berry St":"bg-col-red",
+      "Police prosecutors":"bg-col-red",
+      "Darebin community legal services":"bg-col-blue",
+      "Fitzroy Legal Service":"bg-col-blue",
+      "Victoria Legal Aid":"bg-col-blue",
+      "St Vincents Mental Health":"bg-col-yellow",
+      "Koori Justice Worker":"bg-col-yellow",
+      "Court Network":"bg-col-yellow",
+      "Launch Housing":"bg-col-yellow",
+      "Salvation Army":"bg-col-yellow",
+      "Cohealth - Casework Counsellor":"bg-col-yellow",
+      "Cohealth":"bg-col-yellow",
+      "Odyssey House":"bg-col-yellow",
+      "NEAMI":"bg-col-yellow",
+      "New Hope":"bg-col-yellow",
+      "CSV Drug and Alchohol":"bg-col-yellow",
+      "Court Officer":"bg-col-yellow",
+      "Duty Worker":"bg-col-yellow",
+      "Client services":"bg-col-yellow",
     };
 
     // map the service to a colour
@@ -105,6 +154,10 @@ module.exports = function(app){
       "Client services":"CS",
     };
 
+    function queryMetadata(name, source_arr){
+      return source_arr[name] || "";
+    }
+
     return {
       all: function(){
         $log.log("Returning all providers");
@@ -112,19 +165,20 @@ module.exports = function(app){
       },
       allWithMetadata: function(){
         return _.map(data, function(item){
-          item.color = findColor(item.name) || "";
-          item.abbreviation = findAbbreviation(item.name) || "";
+          item.colour = queryMetadata(item.name, colors);
+          item.abbreviation = queryMetadata(item.name, abbrev);
+          $log.log(item);
           return item;
         });
       },
       findBgColor: function(service){
-        return bgColors[service] || "";
+        return queryMetadata(service, bgColors);
       },
       findColor: function(service){
-        return colors[service] || "";
+        return queryMetadata(service, colors);
       },
       findShortname: function(service){
-        return abbrev[service] || "";
+        return queryMetadata(service, abbrev);
       }
     };
   }

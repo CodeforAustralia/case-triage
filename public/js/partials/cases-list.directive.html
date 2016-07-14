@@ -9,7 +9,7 @@
     </div>
   </div>
   <div class="case-list-summary">
-    <div class="case" ng-repeat="case in filtered = (vm.cases | filter:vm.filters.keywords | caseHearingDateFilter:vm.filters.hearing_date | caseServicesFilter:vm.filters.service_providers_array) | orderBy:['meta.hearing_date', 'meta.list_number','meta.case_number','meta.hearing_type']">
+    <div class="case" ng-repeat="case in filtered = (vm.cases | filter:vm.filters.keywords | caseHearingDateFilter:vm.filters.hearing_date | caseServicesFilter:vm.filters.service_providers_array) | orderBy:['-meta.hearing_date', 'meta.list_number','meta.case_number','meta.hearing_type']">
       <div class="case-info">
         <div class="row">
           <div class="col-xs-8">

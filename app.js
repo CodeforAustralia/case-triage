@@ -21,6 +21,7 @@ var authUser = require('./models/authUser');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var feedback = require('./routes/feedback');
 var cases = require('./routes/cases');
 var migrations = require('./routes/migrations');
 var auth = require('./routes/auth');
@@ -131,6 +132,7 @@ app.use(function(req, res, next){
 
 // Routes
 app.use('/api/cases', cases);
+app.use('/api/feedback', feedback); // token based auth route
 
 
 // catch 404 and forward to error handler

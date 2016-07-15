@@ -92,8 +92,9 @@ module.exports = function(app){
       update: function(new_data){
         return updateCase(new_data);
       },
-      export: function(){
-        return $http.get("/api/cases/export", _case);        
+      export: function(filter){
+        filter.type = "csv";
+        return $http.get("/api/exports", {params: filter});
       }
     };
   }

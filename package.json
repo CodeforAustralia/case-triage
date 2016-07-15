@@ -1,6 +1,6 @@
 {
   "name": "triage",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "private": true,
   "engines": {
     "node": "5.8.0"
@@ -26,7 +26,7 @@
     "angular-toastr": "^1.7.0",
     "angular-ui-router": "^0.2.18",
     "api-check": "^7.5.5",
-    "async": "^2.0.0-rc.1",
+    "async": "^2.0.0",
     "body-parser": "1.12.4",
     "bootstrap-additions": "^0.3.1",
     "bootstrap-loader": "^1.0.10",

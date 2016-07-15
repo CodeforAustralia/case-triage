@@ -5,7 +5,7 @@ module.exports = function(app){
   app.controller('CasesDashboardController', CasesDashboardController);
 
   /*@ngInject*/
-  function CasesDashboardController($scope, $log, Cases, CasesService, Providers, Interactions){
+  function CasesDashboardController($scope, $log, Cases, CasesService, Providers, Interactions, TokenService){
 
     var vm = this;
     vm.filters = {
@@ -17,6 +17,18 @@ module.exports = function(app){
     vm.cases = Cases.data;
     vm.service_providers = _.orderBy(Providers, ['name'], ['asc']);
     vm.interaction_types = _.orderBy(Interactions, ['id'], ['asc']);
+    vm.export_options = [
+      // should hit an api like /export?filter=param => /export?filter=all-cases
+      {label: 'All data', value: 'all-data'},
+      {label: 'Case assigned services', value: 'case-assigned-services'},
+      {label: 'Case conflicts', value: 'case-conflicts'},
+      {label: 'Case interactions', value: 'case-interactions'},
+      {label: 'Case outcomes', value: 'case-outcomes'},
+    ];
+
+    vm.currentToken = function(){
+      return TokenService.get();
+    };
 
     // set the colors for each service
 
@@ -24,9 +36,8 @@ module.exports = function(app){
       vm.filter = provider;
     };
 
-    vm.exportCases = function(){
-      return CasesService
-        .export();
+    vm.exportCases = function(filter){
+      return CasesService.export({ filter: filter });
     };
 
     setAllProviders();
@@ -41,7 +52,7 @@ module.exports = function(app){
         vm.filters.service_providers[provider.name] = false;
       });
     }
-    
+
     init();
   }
 

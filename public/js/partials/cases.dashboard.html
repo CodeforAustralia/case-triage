@@ -12,9 +12,17 @@
       <button type="button" class="btn btn-primary" ui-sref="cases.new({})">
         Add a new case&nbsp;<span class="fa fa-plus" />
       </button>
-      <button type="button" class="btn btn-primary" onClick="vm.exportCases()">
-        Export all cases&nbsp;<span class="fa fa-download" />
-      </button>
+      <div class="btn-group">
+        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Export cases&nbsp;<span class="fa fa-download" />
+        </button>
+        <ul class="dropdown-menu dropdown-menu-right">
+          <li ng-repeat="opt in vm.export_options">
+            <!--<a class="dropdown-item" target="_blank" href="vm.exportCases(opt.value)">{{ opt.label }}</a>-->
+            <a class="dropdown-item" target="_blank" href="/api/exports?filter={{opt.value}}&access_token={{ vm.currentToken() }}">{{ opt.label }}</a>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
   <div class="row">

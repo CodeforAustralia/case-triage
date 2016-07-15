@@ -72,54 +72,6 @@ router.get('/seeder', function(req, res, next){
 });
 
 
-function flattenForExport(cases){
-
-}
-
-/* GET export all the cases */
-// FILTER BY DATE RANGE??
-
-/*
-EXPORTS
-
-Outcomes:
-- case_id
-- date
-- outcome
-
-Interactions:
-- case_id
-- date
-- party
-- interaction
-- service
-
-Assigned services:
-- case_id
-- date
-- party
-- service
-
-Conflicts:
-- case_id
-- date
-- party
-- conflict(s) [vla, fls, double conflict]
-*/
-
-router.get('/export', function(req, res, next) {
-  var moment = require('moment');
-  var curr_date = moment().format('DD_MMMM_YYYY_h_mm_ss')
-  var q = Cases.find();
-  // return all cases
-  q.exec(function(err, cases){
-    // 404 if theres an error
-    if (err) return res.sendStatus(500);
-    // return all the cases otherwise
-    res.json(cases);
-  });
-});
-
 /* GET all resources (cases) */
 // FILTER BY DATE RANGE
 router.get('/', function(req, res, next) {
@@ -189,11 +141,9 @@ router.put('/:id', function(req, res, next) {
 
   Cases.findByIdAndUpdate(id, _case, function(err, data){
     if (err){
-      console.log(err);
       return res.sendStatus(500);
     }
 
-    console.log(_case);
     res.json(_case);
   });
 });

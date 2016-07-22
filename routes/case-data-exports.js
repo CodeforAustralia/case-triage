@@ -109,6 +109,7 @@ function convertToCSV(data, report_type){
 
 /* GET export all the cases */
 // FILTER BY DATE RANGE
+// extract out to a utils file
 
 function returnCSV(res, data, filename){
   filename = (typeof filename === 'undefined') ? "testing-"+moment().unix()+".csv" : filename;

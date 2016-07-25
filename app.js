@@ -21,6 +21,7 @@ var authUser = require('./models/authUser');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var dumps = require('./routes/dumps');
 var feedback = require('./routes/feedback');
 var cases = require('./routes/cases');
 var caseDataExports = require('./routes/case-data-exports');
@@ -84,6 +85,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/triage/static', express.static('public'));
 
 app.use('/', routes);
+app.use('/dumps', dumps);
 //app.use('/users', users);
 app.use('/api/authenticate', auth); // token based auth route
 

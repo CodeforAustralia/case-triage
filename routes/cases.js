@@ -117,7 +117,10 @@ router.post('/', function(req, res, next) {
     "meta.case_number": _case.meta.case_number,
     "meta.hearing_date": _case.meta.hearing_date
   }, function(err, case_res){
-    if (err) throw Error(err);
+    if (err){
+      console.log(err);
+      res.sendStatus(500);
+    }
     if (case_res) res.status(409).send('Case already exists');
     // save the case
     _case.save(function(err, _c){

@@ -18,7 +18,8 @@ router.post('/login',
 
 // seeder
 router.post('/seeder', function(req, res, err){
-  console.log("seeder");
+  // the demo should not allow creating / updating of content just reading
+  return res.json("Read only mode for the demo :)");
 
   AuthUser.register(new AuthUser({ username : req.body.username }), req.body.password, function(err, user) {
       if (err) {

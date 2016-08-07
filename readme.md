@@ -11,9 +11,6 @@
 ## Usage
 This app requires npm and nodejs
 
-## Deployment
-
-
 ## Credits
 * [Ezekiel Kigbo](http://eakigbo.me )
 * [Neighbourhood Justice Centre](http://neighbourhoodjustice.vic.gov.au)

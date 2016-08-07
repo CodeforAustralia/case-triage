@@ -57,6 +57,9 @@ function backup(done){
 
 /* GET users listing. */
 router.get('/:migration', function(req, res, next) {
+  // the demo should not allow creating / updating of content just reading
+  return res.json("Read only mode for the demo :)");
+
   var m = req.params.migration;
   run(m, function(){
     console.log("Executing done callback");

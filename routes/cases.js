@@ -101,6 +101,9 @@ router.get('/:case_number', function(req, res, next) {
 
 /* POST add a new resource */
 router.post('/', function(req, res, next) {
+  // the demo should not allow creating / updating of content just reading
+  return res.json("Read only mode for the demo :)");
+
   var params = req.body;
   var _case = new Cases({
     "meta": {
@@ -136,6 +139,9 @@ router.post('/', function(req, res, next) {
 
 /* PUT update a resource */
 router.put('/:id', function(req, res, next) {
+  // the demo should not allow creating / updating of content just reading
+  return res.json("Read only mode for the demo :)");
+
   var id = req.params.id;
   console.log(req.body);
   var _case = req.body;
